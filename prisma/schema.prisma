@@ -1,0 +1,209 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  passwordHash  String?
+  name          String?
+  avatar        String?
+  role          Role      @default(LECTOR)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  // Relationships
+  schools           School[]  @relation("OwnerSchools")
+  classes           Class[]   @relation("CoordinatorClasses")
+  supervisedClasses Class[]   @relation("SupervisorClasses")
+  teachingSessions  Lesson[]  @relation("LectorLessons")
+  children          Student[] @relation("ParentChildren")
+  // Future: Student portal account link
+  studentProfile    Student?  @relation("StudentUser")
+
+  // Messenger & Updates
+  conversations     Conversation[]
+  sentMessages      Message[]       @relation("SentMessages")
+  readMessages      Message[]       @relation("ReadMessages")
+  updates           EngagementUpdate[] @relation("AuthorUpdates")
+}
+
+enum Role {
+  OWNER
+  COORDINATOR
+  SUPERVISOR
+  LECTOR
+  PARENT
+  STUDENT // Future: Student self-service portal
+}
+
+model School {
+  id          String   @id @default(cuid())
+  name        String
+  address     String?
+  ownerId     String?
+  owner       User?    @relation("OwnerSchools", fields: [ownerId], references: [id])
+  classes     Class[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Class {
+  id             String   @id @default(cuid())
+  name           String   // e.g., "1st Grade - Alpha"
+  schoolId       String
+  school         School   @relation(fields: [schoolId], references: [id])
+  coordinatorId  String?
+  coordinator    User?    @relation("CoordinatorClasses", fields: [coordinatorId], references: [id])
+  supervisorId   String?
+  supervisor     User?    @relation("SupervisorClasses", fields: [supervisorId], references: [id])
+  
+  students       Student[]
+  courses        Course[]
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model Student {
+  id        String   @id @default(cuid())
+  firstName String
+  lastName  String
+  classId   String
+  class     Class    @relation(fields: [classId], references: [id])
+  parentId  String?
+  parent    User?    @relation("ParentChildren", fields: [parentId], references: [id])
+  // Future: Link student to a User account for portal login
+  userId    String?  @unique
+  user      User?    @relation("StudentUser", fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Subject {
+  id        String   @id @default(cuid())
+  name      String   // e.g., English, Math (1 of 6 subjects)
+  courses   Course[]
+  library   LibraryContent[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Course {
+  id             String   @id @default(cuid())
+  title          String   // e.g. "1st Grade English - Alpha"
+  classId        String
+  class          Class    @relation(fields: [classId], references: [id])
+  subjectId      String
+  subject        Subject  @relation(fields: [subjectId], references: [id])
+  lessons        Lesson[]
+  
+  // Total lessons per year logic (e.g. 12 per subject out of 38 total)
+  targetLessons  Int      @default(12) 
+  
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model Lesson {
+  id          String      @id @default(cuid())
+  title       String
+  date        DateTime
+  courseId    String
+  course      Course      @relation(fields: [courseId], references: [id])
+  lectorId    String
+  lector      User        @relation("LectorLessons", fields: [lectorId], references: [id])
+  
+  curriculum  Curriculum?
+  
+  status      LessonStatus @default(SCHEDULED)
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+}
+
+enum LessonStatus {
+  SCHEDULED
+  COMPLETED
+  CANCELLED
+}
+
+// Curriculum created by a lector before the lesson starts
+model Curriculum {
+  id          String   @id @default(cuid())
+  content     String   // markdown or rich text
+  goals       String?
+  published   Boolean  @default(false)
+  
+  lessonId    String   @unique
+  lesson      Lesson   @relation(fields: [lessonId], references: [id])
+  
+  materials   Material[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// Materials - worksheets shared with parents
+model Material {
+  id           String     @id @default(cuid())
+  title        String
+  url          String     // file URL
+  type         String     @default("WORKSHEET") // worksheet, video, etc
+  curriculumId String     
+  curriculum   Curriculum @relation(fields: [curriculumId], references: [id])
+  
+  createdAt    DateTime   @default(now())
+}
+
+// Knowledge lessons library for grades 1-9
+model LibraryContent {
+  id          String   @id @default(cuid())
+  title       String
+  content     String
+  grade       Int      // 1-9
+  subjectId   String
+  subject     Subject  @relation(fields: [subjectId], references: [id])
+  authorId    String?  // Who created it (e.g., Owner/Coordinator)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Conversation {
+  id            String    @id @default(cuid())
+  participants  User[]
+  messages      Message[]
+
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+model Message {
+  id              String      @id @default(cuid())
+  content         String
+  senderId        String
+  sender          User        @relation("SentMessages", fields: [senderId], references: [id])
+  conversationId  String
+  conversation    Conversation @relation(fields: [conversationId], references: [id])
+  readBy          User[]      @relation("ReadMessages")
+  createdAt       DateTime    @default(now())
+}
+
+model EngagementUpdate {
+  id        String   @id @default(cuid())
+  type      String   // e.g. "INSIGHT", "PULSE", "ALERT"
+  content   String
+  tag       String?  // e.g. "Positive", "Action Required"
+  variant   String?  // e.g. "primary", "secondary", "dark"
+  authorId  String
+  author    User     @relation("AuthorUpdates", fields: [authorId], references: [id])
+  targetId  String?  // Optional target (e.g. Parent ID or Class ID)
+  createdAt DateTime @default(now())
+}
+
+// Add relationship back to User
+// (Note: Requires adding fields to User model)

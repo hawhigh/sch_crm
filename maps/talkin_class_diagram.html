@@ -1,0 +1,163 @@
+
+<div id="class-diagram" style="padding: 1rem 0;"></div>
+<script type="module">
+import mermaid from 'https://esm.sh/mermaid@11/dist/mermaid.esm.min.mjs';
+const dark = matchMedia('(prefers-color-scheme: dark)').matches;
+await document.fonts.ready;
+mermaid.initialize({
+  startOnLoad: false,
+  theme: 'base',
+  fontFamily: '"Anthropic Sans", sans-serif',
+  themeVariables: {
+    darkMode: dark,
+    fontSize: '12px',
+    fontFamily: '"Anthropic Sans", sans-serif',
+    background: dark ? '#1a1a1a' : '#ffffff',
+    primaryColor: dark ? '#2a2a2a' : '#ffffff',
+    primaryBorderColor: dark ? '#888' : '#333',
+    primaryTextColor: dark ? '#e0e0e0' : '#000000',
+    secondaryColor: dark ? '#333' : '#f5f5f5',
+    tertiaryColor: dark ? '#222' : '#fafafa',
+    lineColor: dark ? '#aaa' : '#333333',
+    textColor: dark ? '#e0e0e0' : '#000000',
+    classText: dark ? '#e0e0e0' : '#000000',
+    nodeBorder: dark ? '#888' : '#333',
+  },
+});
+
+const diagram = `classDiagram
+  namespace Identity {
+    class User {
+      +UUID id PK
+      +String email
+      +String firstName
+      +String lastName
+      +RoleEnum role
+      +String passwordHash
+      +Boolean isActive
+      +DateTime createdAt
+    }
+    class RoleEnum {
+      <<enumeration>>
+      OWNER
+      COORDINATOR
+      SUPERVISOR
+      LECTOR
+      PARENT
+      STUDENT
+    }
+  }
+
+  namespace Institutional {
+    class School {
+      +UUID id PK
+      +String name
+      +String address
+      +UUID ownerId FK
+      +DateTime createdAt
+    }
+    class Class {
+      +UUID id PK
+      +UUID schoolId FK
+      +Int gradeNumber
+      +String label
+      +UUID supervisorId FK
+      +Int academicYear
+    }
+    class Student {
+      +UUID id PK
+      +UUID userId FK
+      +UUID classId FK
+      +UUID parentId FK
+      +DateTime enrolledAt
+      +StatusEnum status
+    }
+  }
+
+  namespace Academic {
+    class Subject {
+      +UUID id PK
+      +String name
+      +String code
+      +Int lessonsPerYear
+    }
+    class Curriculum {
+      +UUID id PK
+      +UUID subjectId FK
+      +UUID lectorId FK
+      +StatusEnum status
+      +DateTime publishedAt
+    }
+    class Course {
+      +UUID id PK
+      +UUID classId FK
+      +UUID curriculumId FK
+      +Int totalLessons
+      +Int academicYear
+    }
+    class Lesson {
+      +UUID id PK
+      +UUID courseId FK
+      +UUID lectorId FK
+      +Int sequenceNo
+      +DateTime scheduledAt
+      +StatusEnum status
+    }
+    class Material {
+      +UUID id PK
+      +UUID curriculumId FK
+      +String title
+      +String fileUrl
+      +String type
+    }
+  }
+
+  namespace Operational {
+    class Attendance {
+      +UUID id PK
+      +UUID lessonId FK
+      +UUID studentId FK
+      +AttendanceEnum status
+      +String note
+    }
+    class Assessment {
+      +UUID id PK
+      +UUID lessonId FK
+      +UUID studentId FK
+      +Float score
+      +String feedback
+      +DateTime gradedAt
+    }
+    class Notification {
+      +UUID id PK
+      +UUID userId FK
+      +String message
+      +Boolean isRead
+      +DateTime sentAt
+    }
+  }
+
+  User "1" --> "1" RoleEnum : has role
+  School "1" --> "1..*" Class : contains
+  User "1" --> "0..*" School : owns
+  User "1" --> "0..*" Class : supervises
+  Class "1" --> "0..*" Student : enrolls
+  User "1" --> "0..1" Student : is
+  User "1" --> "0..1" Student : parents
+  User "1" --> "0..*" Curriculum : authors
+  Subject "1" --> "0..*" Curriculum : frames
+  Curriculum "1" --> "0..*" Material : contains
+  Curriculum "1" --> "0..*" Course : drives
+  Class "1" --> "0..*" Course : runs
+  Course "1" --> "38" Lesson : has
+  User "1" --> "0..*" Lesson : teaches
+  Lesson "1" --> "0..*" Attendance : records
+  Student "1" --> "0..*" Attendance : logged in
+  Lesson "1" --> "0..*" Assessment : produces
+  Student "1" --> "0..*" Assessment : receives
+  User "1" --> "0..*" Notification : receives
+`;
+
+const { svg } = await mermaid.render('class-svg', diagram);
+document.getElementById('class-diagram').innerHTML = svg;
+</script>

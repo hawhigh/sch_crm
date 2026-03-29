@@ -1,0 +1,63 @@
+
+<div id="rel-diagram" style="padding: 1rem 0;"></div>
+<script type="module">
+import mermaid from 'https://esm.sh/mermaid@11/dist/mermaid.esm.min.mjs';
+const dark = matchMedia('(prefers-color-scheme: dark)').matches;
+await document.fonts.ready;
+mermaid.initialize({
+  startOnLoad: false,
+  theme: 'base',
+  fontFamily: '"Anthropic Sans", sans-serif',
+  themeVariables: {
+    darkMode: dark,
+    fontSize: '13px',
+    fontFamily: '"Anthropic Sans", sans-serif',
+    background: dark ? '#1a1a1a' : '#ffffff',
+    primaryColor: dark ? '#2a2a2a' : '#ffffff',
+    primaryBorderColor: dark ? '#888' : '#333',
+    primaryTextColor: dark ? '#e0e0e0' : '#000000',
+    secondaryColor: dark ? '#2a2a2a' : '#f0f0f0',
+    tertiaryColor: dark ? '#1e1e1e' : '#fafafa',
+    lineColor: dark ? '#aaa' : '#333333',
+    textColor: dark ? '#e0e0e0' : '#000000',
+    classText: dark ? '#e0e0e0' : '#000000',
+    nodeBorder: dark ? '#888' : '#333',
+  },
+});
+
+const diagram = `classDiagram
+  class User {
+    role: OWNER..STUDENT
+  }
+  class School {
+    grades: 1 – 9
+  }
+  class Class {
+    gradeNumber: 1..9
+  }
+  class Student {
+    status: active
+  }
+  class Course {
+    totalLessons: 38
+  }
+  class Lesson {
+    sequence: 1..38
+  }
+  class Curriculum {
+    status: draft|published
+  }
+
+  User "1" --> "1..*" School : owns
+  School "1" --> "1..*" Class : contains
+  Class "1" --> "0..*" Student : enrolls
+  User "1" --> "0..1" Student : is
+  Class "1" --> "0..*" Course : runs
+  Curriculum "1" --> "0..*" Course : drives
+  Course "1" --> "0..*" Lesson : has
+  User "1" --> "0..*" Curriculum : authors
+`;
+
+const { svg } = await mermaid.render('rel-svg', diagram);
+document.getElementById('rel-diagram').innerHTML = svg;
+</script>

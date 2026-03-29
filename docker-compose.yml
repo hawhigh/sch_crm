@@ -1,0 +1,24 @@
+version: "3.9"
+
+services:
+  t:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: talkin_crm1
+    restart: unless-stopped
+    ports:
+      - "3099:3033"
+    environment:
+      NODE_ENV: production
+      PORT: 3033
+      DATABASE_URL: ${DATABASE_URL}
+      JWT_SECRET: ${JWT_SECRET}
+    networks:
+      - ai-platform_default
+    labels:
+      - "com.docker.compose.project=talkin_crm1"
+
+networks:
+  ai-platform_default:
+    external: true

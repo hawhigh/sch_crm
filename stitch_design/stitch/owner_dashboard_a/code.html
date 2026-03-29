@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Talkin.sk | Owner Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-secondary-fixed-variant": "#434b00",
+              "on-tertiary-fixed": "#1b1c1c",
+              "on-primary": "#ffffff",
+              "surface-bright": "#fbf9f5",
+              "on-tertiary-container": "#b5b4b3",
+              "surface-container-low": "#f5f3ef",
+              "secondary-fixed-dim": "#bdd100",
+              "on-surface": "#1b1c1a",
+              "surface-variant": "#e4e2de",
+              "error-container": "#ffdad6",
+              "on-error-container": "#93000a",
+              "inverse-primary": "#bfc2ff",
+              "surface-container-lowest": "#ffffff",
+              "on-tertiary-fixed-variant": "#474747",
+              "surface-dim": "#dbdad6",
+              "on-error": "#ffffff",
+              "primary-fixed-dim": "#bfc2ff",
+              "on-tertiary": "#ffffff",
+              "secondary": "#5a6400",
+              "on-surface-variant": "#454557",
+              "background": "#fbf9f5",
+              "surface-container-high": "#eae8e4",
+              "primary-fixed": "#e0e0ff",
+              "tertiary": "#303030",
+              "inverse-surface": "#30312e",
+              "secondary-fixed": "#d8ef00",
+              "primary": "#0300a9",
+              "primary-container": "#0a05e9",
+              "on-secondary": "#ffffff",
+              "outline": "#757589",
+              "inverse-on-surface": "#f2f0ed",
+              "surface-container": "#efeeea",
+              "outline-variant": "#c6c4da",
+              "tertiary-fixed-dim": "#c8c6c6",
+              "tertiary-container": "#464646",
+              "surface": "#fbf9f5",
+              "error": "#ba1a1a",
+              "surface-container-highest": "#e4e2de",
+              "secondary-container": "#d5ec00",
+              "on-secondary-fixed": "#1a1e00",
+              "on-secondary-container": "#5e6800",
+              "on-primary-fixed": "#01006e",
+              "on-primary-container": "#a8adff",
+              "tertiary-fixed": "#e4e2e1",
+              "on-background": "#1b1c1a",
+              "surface-tint": "#363cff",
+              "on-primary-fixed-variant": "#0d0aea"
+            },
+            fontFamily: {
+              "headline": ["Lexend"],
+              "body": ["Lexend"],
+              "label": ["Lexend"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      body {
+        font-family: 'Lexend', sans-serif;
+      }
+    </style>
+</head>
+<body class="bg-background text-on-background selection:bg-secondary-fixed selection:text-on-secondary-fixed">
+<div class="flex min-h-screen">
+<!-- SideNavBar Component -->
+<aside class="hidden md:flex flex-col h-screen w-64 bg-[#f5f3ef] dark:bg-slate-950 py-6 space-y-2 sticky top-0 overflow-y-auto">
+<div class="px-6 mb-8">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<div>
+<h2 class="text-xl font-bold text-[#303030] dark:text-white leading-none">Talkin.sk</h2>
+<p class="text-[10px] uppercase tracking-widest text-on-surface-variant/60 font-medium mt-1">Editorial CRM</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<!-- Active Tab: Owner -->
+<a class="flex items-center gap-3 px-4 py-3 text-[#0300a9] dark:text-[#d8ef00] bg-[#eae8e4] dark:bg-slate-800 rounded-lg mx-2 transition-transform duration-200 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">admin_panel_settings</span>
+<span class="font-lexend text-sm tracking-wide uppercase font-medium">Owner</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#303030] dark:text-slate-500 hover:bg-[#eae8e4]/50 dark:hover:bg-slate-800/50 mx-2 transition-colors duration-200 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">visibility</span>
+<span class="font-lexend text-sm tracking-wide uppercase font-medium">Supervisor</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#303030] dark:text-slate-500 hover:bg-[#eae8e4]/50 dark:hover:bg-slate-800/50 mx-2 transition-colors duration-200 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">account_tree</span>
+<span class="font-lexend text-sm tracking-wide uppercase font-medium">Coordinator</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#303030] dark:text-slate-500 hover:bg-[#eae8e4]/50 dark:hover:bg-slate-800/50 mx-2 transition-colors duration-200 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">school</span>
+<span class="font-lexend text-sm tracking-wide uppercase font-medium">Lector</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#303030] dark:text-slate-500 hover:bg-[#eae8e4]/50 dark:hover:bg-slate-800/50 mx-2 transition-colors duration-200 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">family_restroom</span>
+<span class="font-lexend text-sm tracking-wide uppercase font-medium">Parent</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#303030] dark:text-slate-500 hover:bg-[#eae8e4]/50 dark:hover:bg-slate-800/50 mx-2 transition-colors duration-200 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-lexend text-sm tracking-wide uppercase font-medium">Student</span>
+</a>
+</nav>
+<div class="pt-6 border-t border-outline-variant/10 px-4 space-y-1">
+<button class="w-full mb-4 py-3 bg-primary text-on-primary rounded-xl font-bold text-sm tracking-tight flex items-center justify-center gap-2 active:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-sm">add</span>
+                    Quick Action
+                </button>
+<a class="flex items-center gap-3 px-4 py-3 text-[#303030] dark:text-slate-500 hover:bg-[#eae8e4]/50 dark:hover:bg-slate-800/50 mx-2 transition-colors duration-200 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-lexend text-sm tracking-wide uppercase font-medium">Settings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#303030] dark:text-slate-500 hover:bg-[#eae8e4]/50 dark:hover:bg-slate-800/50 mx-2 transition-colors duration-200 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-lexend text-sm tracking-wide uppercase font-medium">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 min-w-0 bg-surface flex flex-col overflow-hidden">
+<!-- TopNavBar Component -->
+<header class="flex justify-between items-center w-full px-8 py-4 bg-[#fbf9f5] dark:bg-slate-900 sticky top-0 z-10">
+<div class="flex items-center gap-8">
+<h1 class="text-2xl font-black text-[#0300a9] tracking-tight">Dashboard</h1>
+<div class="hidden lg:flex items-center gap-6">
+<a class="text-[#0300a9] font-bold border-b-2 border-[#0300a9] pb-1 text-base leading-relaxed" href="#">Dashboard</a>
+<a class="text-[#303030] dark:text-slate-400 opacity-70 hover:text-[#0300a9] hover:opacity-100 transition-all text-base leading-relaxed" href="#">Analytics</a>
+<a class="text-[#303030] dark:text-slate-400 opacity-70 hover:text-[#0300a9] hover:opacity-100 transition-all text-base leading-relaxed" href="#">Schedule</a>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative group">
+<div class="absolute inset-y-0 left-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-on-surface-variant/50 text-xl">search</span>
+</div>
+<input class="bg-surface-container-low border-none rounded-full pl-10 pr-4 py-2 w-64 focus:ring-2 focus:ring-primary/20 transition-all text-sm placeholder:text-on-surface-variant/40" placeholder="Search institutional data..." type="text"/>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-high rounded-full transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-secondary rounded-full border-2 border-surface"></span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined">help_outline</span>
+</button>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary/10">
+<img alt="User Profile Avatar" class="w-full h-full object-cover" data-alt="professional portrait of a confident middle-aged male executive in a sleek suit with warm studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhUHvt723Wax12UpxrMx4acH3gM06Es4whYLZ6qDS45c0whEk5rsIxH6CfXpgqmLzDdeZZtGWQHgIihQ0HNl06volo6ZISpIHCj6vcG7yx4zjQDIp_nuAaLz0e7uO87dlUGA_jhpZ_-tmCKGegd4qSf5DUxPz9qM_V6wwBn48EK2j1BayS7ibybQedb3RWH4y81ApIJXwalzsQUvoEjYxFkib-q7tYxNUm9ZseaqwI1Lzq6NzKspzqCMCkymrAx6sPgyjFYrmtIvQP"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Dashboard Content -->
+<div class="flex-1 overflow-y-auto px-8 pb-12">
+<div class="max-w-[1400px] mx-auto pt-8">
+<!-- Hero Financial Section: Asymmetric Layout -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
+<!-- Main Metric Card -->
+<div class="lg:col-span-8 bg-surface-container-low rounded-3xl p-10 flex flex-col justify-between overflow-hidden relative group">
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full -mr-20 -mt-20 blur-3xl group-hover:bg-primary/10 transition-colors"></div>
+<div>
+<h3 class="label-md font-bold uppercase tracking-widest text-on-surface-variant mb-4 flex items-center gap-2">
+<span class="w-2 h-2 bg-primary rounded-full"></span>
+                                    Current Revenue Stream
+                                </h3>
+<div class="flex items-baseline gap-4">
+<span class="text-6xl md:text-8xl font-black text-primary tracking-tighter">€142.8k</span>
+<span class="text-2xl font-bold text-secondary-fixed-dim">+12.4%</span>
+</div>
+<p class="text-on-surface-variant mt-4 max-w-md text-lg leading-relaxed">Monthly Recurring Revenue across all 14 institutional branches in the CEE region.</p>
+</div>
+<div class="mt-12 h-48 w-full flex items-end gap-2">
+<!-- Dummy Chart Visual -->
+<div class="flex-1 bg-primary/10 hover:bg-primary/20 transition-colors rounded-t-lg h-[40%]"></div>
+<div class="flex-1 bg-primary/10 hover:bg-primary/20 transition-colors rounded-t-lg h-[60%]"></div>
+<div class="flex-1 bg-primary/10 hover:bg-primary/20 transition-colors rounded-t-lg h-[55%]"></div>
+<div class="flex-1 bg-primary/20 hover:bg-primary/30 transition-colors rounded-t-lg h-[80%]"></div>
+<div class="flex-1 bg-primary/10 hover:bg-primary/20 transition-colors rounded-t-lg h-[70%]"></div>
+<div class="flex-1 bg-primary/40 hover:bg-primary/50 transition-colors rounded-t-lg h-[90%]"></div>
+<div class="flex-1 bg-primary h-full rounded-t-lg"></div>
+</div>
+</div>
+<!-- Secondary Metrics: Stacking -->
+<div class="lg:col-span-4 flex flex-col gap-8">
+<div class="flex-1 bg-tertiary text-on-tertiary rounded-3xl p-8 flex flex-col justify-between">
+<span class="material-symbols-outlined text-secondary-fixed text-3xl">insights</span>
+<div>
+<p class="text-sm uppercase tracking-widest text-on-tertiary/60 font-medium">Institutional LTV</p>
+<p class="text-4xl font-black mt-2">€4,250</p>
+<p class="text-xs text-on-tertiary/40 mt-1">Average lifetime value per student enrollment</p>
+</div>
+</div>
+<div class="flex-1 bg-secondary-container text-on-secondary-container rounded-3xl p-8 flex flex-col justify-between">
+<span class="material-symbols-outlined text-primary text-3xl">hub</span>
+<div>
+<p class="text-sm uppercase tracking-widest text-on-secondary-container/60 font-medium">Global Network Reach</p>
+<p class="text-4xl font-black mt-2">14 Hubs</p>
+<p class="text-xs text-on-secondary-container/40 mt-1">Expanding to Vienna, Q3 2024</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Bento Grid for Global Hubs -->
+<div class="mb-6 flex items-baseline justify-between">
+<h2 class="text-3xl font-black tracking-tight text-tertiary uppercase italic">Global Hub Performance</h2>
+<button class="text-primary font-bold hover:underline flex items-center gap-1">
+                            View All Branches <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Hub Card: Bratislava -->
+<div class="bg-surface-container-high rounded-2xl overflow-hidden group hover:shadow-xl transition-all duration-300">
+<div class="h-48 relative overflow-hidden">
+<img alt="Bratislava Hub" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="dramatic wide angle shot of modern architecture in Bratislava during twilight with soft purple and blue lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBZ4vuJHoqGImAOTRpjDmBAtdUqt-w3x4irhTReb1VE2VWcFrLqkUS7EUYLjeo6DImW_qEjNKdLUbh6gQ1iP00Us6fOA5WwG4Vi8igRZYbIVapM2PprHX3ZNdh7K5_BsiLfhkUv2NzWQKgIfzsj2_rumIKc-p_GSLk2-7qNv9Fx3YqyBVmhKdD4sGlyU5g0iSWyjInICbMrgXn-PsSXNnX2xeEcx7dlRorRyCYermjTBGFprFivoVPdEeP5KrbK3eZXe4lLsxQ9Wxy"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-4 left-4">
+<span class="bg-secondary-fixed text-on-secondary-fixed px-2 py-1 rounded text-[10px] font-black uppercase tracking-widest">HQ</span>
+<h4 class="text-white text-xl font-bold mt-1">Bratislava</h4>
+</div>
+</div>
+<div class="p-6 space-y-4">
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant text-sm font-medium">Monthly Rev.</span>
+<span class="text-primary font-black">€68.4k</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant text-sm font-medium">Growth Index</span>
+<span class="text-secondary font-bold">+18%</span>
+</div>
+<div class="pt-4 border-t border-outline-variant/20 flex gap-2">
+<span class="px-2 py-1 bg-surface-container-highest text-on-surface-variant rounded text-[10px] font-bold uppercase">42 Lectors</span>
+<span class="px-2 py-1 bg-surface-container-highest text-on-surface-variant rounded text-[10px] font-bold uppercase">1.2k Students</span>
+</div>
+</div>
+</div>
+<!-- Hub Card: Košice -->
+<div class="bg-surface-container-high rounded-2xl overflow-hidden group hover:shadow-xl transition-all duration-300">
+<div class="h-48 relative overflow-hidden">
+<img alt="Košice Hub" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="beautiful gothic architecture in Kosice old town square at sunset with vibrant orange and gold lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbDLQVUxNwEWeEg_q3irpbQE0yljE0Imx6i38JEd2cXuccDX5Txcc_n5QU_WN9nm23450JamP4Dcj_flmzT-N3x3yhBRu8HNH8-NtqYHMgBxsGb3juJAeVdVqFvZ_pvrtJ38tf2eMaYIFIu3BLTXdr7WmuIYXXGzz4xD5nrjyAk6LkIN5xUJAq4LExtVHBz9SvkvD_IuX9-pCGT6d5pON5_Lm61kJjqc6ccsBqCODNYhRHLeDWDvQ_j8l_aScIuv6Wdq__WlcnSQ_H"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-4 left-4">
+<span class="bg-surface-container-highest text-on-surface-variant px-2 py-1 rounded text-[10px] font-black uppercase tracking-widest">Eastern</span>
+<h4 class="text-white text-xl font-bold mt-1">Košice</h4>
+</div>
+</div>
+<div class="p-6 space-y-4">
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant text-sm font-medium">Monthly Rev.</span>
+<span class="text-primary font-black">€44.2k</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant text-sm font-medium">Growth Index</span>
+<span class="text-secondary font-bold">+9.2%</span>
+</div>
+<div class="pt-4 border-t border-outline-variant/20 flex gap-2">
+<span class="px-2 py-1 bg-surface-container-highest text-on-surface-variant rounded text-[10px] font-bold uppercase">28 Lectors</span>
+<span class="px-2 py-1 bg-surface-container-highest text-on-surface-variant rounded text-[10px] font-bold uppercase">850 Students</span>
+</div>
+</div>
+</div>
+<!-- Hub Card: Banská Bystrica -->
+<div class="bg-surface-container-high rounded-2xl overflow-hidden group hover:shadow-xl transition-all duration-300">
+<div class="h-48 relative overflow-hidden">
+<img alt="Banská Bystrica Hub" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="scenic mountain landscape surrounding Banska Bystrica with lush greenery and clear morning light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrHifCbF_UdkYDKdVH6TneuK0JqiXPlU8A1AhrGqfsJTLyZ0QSjwq-w9oSsc_SZLWwOFQz-_fhjlRIlij6JDHj7LotfY5IjWmgvjdAi6m4DXT7IIrffHF17WNBHvjc1TxYebU5an_p5yPG9mO6JH_t5Lv0Unk2x-QQUsjCwXg-_7h3EMa2B8L6KDQttYFRs7RiGwzgXGtlnfllTLqYh29RLgSyJyrBoLzXHBgCv-_lHGd2jBtwiFMOAcA4UYWLeUvClCVjFsyVyJ7A"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-4 left-4">
+<span class="bg-surface-container-highest text-on-surface-variant px-2 py-1 rounded text-[10px] font-black uppercase tracking-widest">Central</span>
+<h4 class="text-white text-xl font-bold mt-1">Banská Bystrica</h4>
+</div>
+</div>
+<div class="p-6 space-y-4">
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant text-sm font-medium">Monthly Rev.</span>
+<span class="text-primary font-black">€30.2k</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant text-sm font-medium">Growth Index</span>
+<span class="text-error font-bold">-2.1%</span>
+</div>
+<div class="pt-4 border-t border-outline-variant/20 flex gap-2">
+<span class="px-2 py-1 bg-surface-container-highest text-on-surface-variant rounded text-[10px] font-bold uppercase">15 Lectors</span>
+<span class="px-2 py-1 bg-surface-container-highest text-on-surface-variant rounded text-[10px] font-bold uppercase">540 Students</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Low Depth Content: Recent Activities & Notifications -->
+<div class="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-8">
+<div class="bg-surface-container-low rounded-3xl p-8">
+<div class="flex items-center justify-between mb-8">
+<h3 class="text-xl font-bold tracking-tight text-tertiary">Institutional Flow</h3>
+<button class="p-2 hover:bg-surface-container-high rounded-full"><span class="material-symbols-outlined">more_horiz</span></button>
+</div>
+<div class="space-y-6">
+<div class="flex gap-4 items-start">
+<div class="w-10 h-10 rounded-full bg-secondary-fixed flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary text-xl">payments</span>
+</div>
+<div class="flex-1">
+<p class="text-sm font-bold text-tertiary leading-tight">New Corporate Contract Signed</p>
+<p class="text-xs text-on-surface-variant mt-1">ESET Digital Hub • Annual Plan • €24,000</p>
+<span class="text-[10px] text-on-surface-variant/40 mt-2 block">2 hours ago</span>
+</div>
+</div>
+<div class="flex gap-4 items-start">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary text-xl">person_add</span>
+</div>
+<div class="flex-1">
+<p class="text-sm font-bold text-tertiary leading-tight">Senior Lector Onboarded</p>
+<p class="text-xs text-on-surface-variant mt-1">Dr. Peter Kovac • Košice Branch • English Specialization</p>
+<span class="text-[10px] text-on-surface-variant/40 mt-2 block">5 hours ago</span>
+</div>
+</div>
+<div class="flex gap-4 items-start">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary text-xl">account_balance</span>
+</div>
+<div class="flex-1">
+<p class="text-sm font-bold text-tertiary leading-tight">Branch Expansion Finalized</p>
+<p class="text-xs text-on-surface-variant mt-1">Vienna Office Lease • Opening scheduled for Sep 12</p>
+<span class="text-[10px] text-on-surface-variant/40 mt-2 block">Yesterday, 14:20</span>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-primary text-on-primary rounded-3xl p-8 overflow-hidden relative">
+<div class="absolute bottom-0 right-0 opacity-10">
+<span class="material-symbols-outlined text-[200px]" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+</div>
+<h3 class="text-xl font-bold tracking-tight mb-4">Strategic Advisory</h3>
+<p class="text-on-primary/70 leading-relaxed mb-6">Your institutional growth is trending 4% above quarterly targets. The Banská Bystrica hub shows a slight dip in conversion—consider a regional lector workshop.</p>
+<button class="bg-secondary-fixed text-on-secondary-fixed px-6 py-3 rounded-xl font-black text-sm uppercase tracking-widest hover:brightness-110 transition-all">Generate Full Report</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

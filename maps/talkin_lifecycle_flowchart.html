@@ -1,0 +1,78 @@
+
+<div id="flow-diagram" style="padding: 1rem 0;"></div>
+<script type="module">
+import mermaid from 'https://esm.sh/mermaid@11/dist/mermaid.esm.min.mjs';
+const dark = matchMedia('(prefers-color-scheme: dark)').matches;
+await document.fonts.ready;
+mermaid.initialize({
+  startOnLoad: false,
+  theme: 'base',
+  fontFamily: '"Anthropic Sans", sans-serif',
+  themeVariables: {
+    darkMode: dark,
+    fontSize: '12px',
+    fontFamily: '"Anthropic Sans", sans-serif',
+    background: dark ? '#1a1a1a' : '#ffffff',
+    primaryColor: dark ? '#2a2a2a' : '#ffffff',
+    primaryBorderColor: dark ? '#888' : '#333',
+    primaryTextColor: dark ? '#e0e0e0' : '#000000',
+    secondaryColor: dark ? '#2a2a2a' : '#f0f0f0',
+    tertiaryColor: dark ? '#1e1e1e' : '#fafafa',
+    lineColor: dark ? '#aaa' : '#333333',
+    textColor: dark ? '#e0e0e0' : '#000000',
+    edgeLabelBackground: dark ? '#1a1a1a' : '#ffffff',
+    clusterBkg: dark ? '#252525' : '#f8f8f8',
+    clusterBorder: dark ? '#666' : '#888',
+  },
+});
+
+const diagram = `flowchart TD
+  START([▶ Academic year begins]) --> STRATEGIC
+
+  subgraph STRATEGIC ["① Strategic layer"]
+    direction TB
+    OWN["OWNER\nRevenue targets & analytics"]
+    COORD["COORDINATOR\nClass & schedule planning"]
+    OWN --> COORD
+  end
+
+  COORD --> ACADEMIC
+
+  subgraph ACADEMIC ["② Academic layer"]
+    direction TB
+    LECT_C["LECTOR\nCreates curriculum"]
+    LECT_C --> DRAFT{Draft complete?}
+    DRAFT -- No --> LECT_C
+    DRAFT -- Yes --> PUBLISH["Curriculum published\n✓ 38 lessons · 12 subject lessons/student"]
+    PUBLISH --> DELIVER["Lessons delivered\n(sequenced 1 → 38)"]
+  end
+
+  DELIVER --> ENGAGE
+
+  subgraph ENGAGE ["③ Engagement layer"]
+    direction TB
+    ATT["Attendance recorded\nper lesson"]
+    ASSESS["Assessments scored\nper student"]
+    ATT --> ASSESS
+    ASSESS --> PARENT_VIEW["PARENT\nViews child progress"]
+    ASSESS --> STUDENT_J["STUDENT\nCompletes journey\n(grades 1 – 9)"]
+    ASSESS --> SUP_MON["SUPERVISOR\nMonitors class metrics"]
+  end
+
+  PARENT_VIEW --> FEEDBACK
+  STUDENT_J --> FEEDBACK
+  SUP_MON --> FEEDBACK
+
+  subgraph FEEDBACK ["④ Analytics & feedback"]
+    direction TB
+    NOTIF["Notifications sent\n(alerts, reports)"]
+    REPORT["Analytics aggregated\nfor OWNER & COORDINATOR"]
+    NOTIF --> REPORT
+  end
+
+  REPORT -->|Next cycle| OWN
+`;
+
+const { svg } = await mermaid.render('flow-svg', diagram);
+document.getElementById('flow-diagram').innerHTML = svg;
+</script>

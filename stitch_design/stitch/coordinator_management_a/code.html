@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Talkin.sk | Coordinator Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-secondary-fixed-variant": "#434b00",
+              "on-tertiary-fixed": "#1b1c1c",
+              "on-primary": "#ffffff",
+              "surface-bright": "#fbf9f5",
+              "on-tertiary-container": "#b5b4b3",
+              "surface-container-low": "#f5f3ef",
+              "secondary-fixed-dim": "#bdd100",
+              "on-surface": "#1b1c1a",
+              "surface-variant": "#e4e2de",
+              "error-container": "#ffdad6",
+              "on-error-container": "#93000a",
+              "inverse-primary": "#bfc2ff",
+              "surface-container-lowest": "#ffffff",
+              "on-tertiary-fixed-variant": "#474747",
+              "surface-dim": "#dbdad6",
+              "on-error": "#ffffff",
+              "primary-fixed-dim": "#bfc2ff",
+              "on-tertiary": "#ffffff",
+              "secondary": "#5a6400",
+              "on-surface-variant": "#454557",
+              "background": "#fbf9f5",
+              "surface-container-high": "#eae8e4",
+              "primary-fixed": "#e0e0ff",
+              "tertiary": "#303030",
+              "inverse-surface": "#30312e",
+              "secondary-fixed": "#d8ef00",
+              "primary": "#0300a9",
+              "primary-container": "#0a05e9",
+              "on-secondary": "#ffffff",
+              "outline": "#757589",
+              "inverse-on-surface": "#f2f0ed",
+              "surface-container": "#efeeea",
+              "outline-variant": "#c6c4da",
+              "tertiary-fixed-dim": "#c8c6c6",
+              "tertiary-container": "#464646",
+              "surface": "#fbf9f5",
+              "error": "#ba1a1a",
+              "surface-container-highest": "#e4e2de",
+              "secondary-container": "#d5ec00",
+              "on-secondary-fixed": "#1a1e00",
+              "on-secondary-container": "#5e6800",
+              "on-primary-fixed": "#01006e",
+              "on-primary-container": "#a8adff",
+              "tertiary-fixed": "#e4e2e1",
+              "on-background": "#1b1c1a",
+              "surface-tint": "#363cff",
+              "on-primary-fixed-variant": "#0d0aea"
+            },
+            fontFamily: {
+              "headline": ["Lexend"],
+              "body": ["Lexend"],
+              "label": ["Lexend"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Lexend', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #eae8e4; border-radius: 10px; }
+        .glass-panel {
+            background: rgba(251, 249, 245, 0.7);
+            backdrop-filter: blur(20px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface flex h-screen overflow-hidden">
+<!-- SideNavBar (Predicted & Rendered from JSON) -->
+<aside class="bg-[#f5f3ef] dark:bg-slate-950 h-screen w-64 flex flex-col py-6 space-y-2 shrink-0">
+<div class="px-6 mb-8">
+<div class="flex items-center space-x-3 mb-1">
+<div class="w-10 h-10 rounded bg-primary flex items-center justify-center text-white">
+<span class="material-symbols-outlined">school</span>
+</div>
+<div>
+<h1 class="text-xl font-bold text-[#303030] dark:text-white leading-none">Talkin.sk</h1>
+<p class="text-[10px] uppercase tracking-widest text-on-surface-variant opacity-60">Editorial CRM</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="text-[#303030] dark:text-slate-500 hover:bg-[#eae8e4]/50 dark:hover:bg-slate-800/50 mx-2 transition-colors flex items-center px-4 py-3 rounded-lg font-medium text-sm tracking-wide uppercase group" href="#">
+<span class="material-symbols-outlined mr-3 group-hover:translate-x-1 transition-transform">admin_panel_settings</span>
+                Owner
+            </a>
+<a class="text-[#303030] dark:text-slate-500 hover:bg-[#eae8e4]/50 dark:hover:bg-slate-800/50 mx-2 transition-colors flex items-center px-4 py-3 rounded-lg font-medium text-sm tracking-wide uppercase group" href="#">
+<span class="material-symbols-outlined mr-3 group-hover:translate-x-1 transition-transform">visibility</span>
+                Supervisor
+            </a>
+<!-- Active State: Coordinator -->
+<a class="text-[#0300a9] dark:text-[#d8ef00] bg-[#eae8e4] dark:bg-slate-800 rounded-lg mx-2 flex items-center px-4 py-3 font-bold text-sm tracking-wide uppercase group" href="#">
+<span class="material-symbols-outlined mr-3" style="font-variation-settings: 'FILL' 1;">account_tree</span>
+                Coordinator
+            </a>
+<a class="text-[#303030] dark:text-slate-500 hover:bg-[#eae8e4]/50 dark:hover:bg-slate-800/50 mx-2 transition-colors flex items-center px-4 py-3 rounded-lg font-medium text-sm tracking-wide uppercase group" href="#">
+<span class="material-symbols-outlined mr-3 group-hover:translate-x-1 transition-transform">school</span>
+                Lector
+            </a>
+<a class="text-[#303030] dark:text-slate-500 hover:bg-[#eae8e4]/50 dark:hover:bg-slate-800/50 mx-2 transition-colors flex items-center px-4 py-3 rounded-lg font-medium text-sm tracking-wide uppercase group" href="#">
+<span class="material-symbols-outlined mr-3 group-hover:translate-x-1 transition-transform">family_restroom</span>
+                Parent
+            </a>
+<a class="text-[#303030] dark:text-slate-500 hover:bg-[#eae8e4]/50 dark:hover:bg-slate-800/50 mx-2 transition-colors flex items-center px-4 py-3 rounded-lg font-medium text-sm tracking-wide uppercase group" href="#">
+<span class="material-symbols-outlined mr-3 group-hover:translate-x-1 transition-transform">person</span>
+                Student
+            </a>
+</nav>
+<div class="pt-6 mt-6 border-t border-outline-variant/10">
+<a class="text-[#303030] dark:text-slate-500 hover:bg-[#eae8e4]/50 dark:hover:bg-slate-800/50 mx-2 transition-colors flex items-center px-4 py-3 rounded-lg font-medium text-sm tracking-wide uppercase group" href="#">
+<span class="material-symbols-outlined mr-3">settings</span>
+                Settings
+            </a>
+<a class="text-error mx-2 flex items-center px-4 py-3 rounded-lg font-medium text-sm tracking-wide uppercase opacity-80 hover:opacity-100 transition-opacity" href="#">
+<span class="material-symbols-outlined mr-3">logout</span>
+                Logout
+            </a>
+</div>
+</aside>
+<main class="flex-1 flex flex-col min-w-0 bg-surface relative">
+<!-- TopNavBar (Predicted from JSON) -->
+<header class="bg-[#fbf9f5] dark:bg-slate-900 flex justify-between items-center w-full px-8 py-4 shrink-0 z-10">
+<div class="flex items-center space-x-8">
+<div class="flex items-center bg-surface-container-low px-4 py-2 rounded-full w-96">
+<span class="material-symbols-outlined text-outline-variant mr-2">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-full placeholder:text-outline-variant/60" placeholder="Search logistics, lectors, or rooms..." type="text"/>
+</div>
+<nav class="hidden lg:flex items-center space-x-6 text-base font-lexend">
+<a class="text-[#303030] dark:text-slate-400 opacity-70 hover:text-[#0300a9] hover:opacity-100 transition-all" href="#">Dashboard</a>
+<a class="text-[#303030] dark:text-slate-400 opacity-70 hover:text-[#0300a9] hover:opacity-100 transition-all" href="#">Analytics</a>
+<a class="text-[#0300a9] font-bold border-b-2 border-[#0300a9] pb-1" href="#">Schedule</a>
+</nav>
+</div>
+<div class="flex items-center space-x-4">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-low transition-colors text-primary relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-secondary rounded-full border-2 border-surface"></span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-low transition-colors text-tertiary">
+<span class="material-symbols-outlined">help_outline</span>
+</button>
+<div class="h-10 w-10 rounded-full overflow-hidden border border-outline-variant/20">
+<img alt="User Profile Avatar" data-alt="close up headshot of a professional coordinator with glasses and a friendly smile in a bright office environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbyWZg1x2dt9jxyje5mHkEiyFS6l3l79OobKGp96fJUTL-1PMigS5MtNdEzNwmJq7qdX7vWtUZGFN1uNIZAlZtDg5Cf5cx2EZfJfAOTSjZYlanHiDcsLG1rO-3OSTW5T5mww5yZZi8A-sEREFsIV-AJylST9LqKeBIXCkejt_RjmdxWWeBSqZz4bd--3pQmTBes97c51iHhjNBDMH0yHsj4I3YBG-BVDJ-kxGO9KVtpf62upmNW5UAjDoLP3VL-295F3ElNmUJhSND"/>
+</div>
+</div>
+</header>
+<!-- Main Content Area: Asymmetric Multi-Pane Portal -->
+<section class="flex-1 flex overflow-hidden p-6 gap-6">
+<!-- LEFT COLUMN: Pending Requests (Match Lector) -->
+<div class="w-80 flex flex-col space-y-4 shrink-0">
+<div class="flex items-center justify-between px-2">
+<h2 class="text-sm font-bold tracking-tighter uppercase text-tertiary">Pending Requests</h2>
+<span class="bg-primary text-white text-[10px] px-2 py-0.5 rounded-full">12 New</span>
+</div>
+<div class="flex-1 overflow-y-auto custom-scrollbar space-y-3">
+<!-- Request Card 1 -->
+<div class="bg-surface-container-lowest p-4 rounded-xl transition-all hover:bg-surface-container-low cursor-pointer group">
+<div class="flex justify-between items-start mb-2">
+<span class="text-[10px] font-black uppercase text-secondary bg-secondary-fixed/30 px-2 py-0.5 rounded">Urgent</span>
+<span class="text-[10px] text-outline">2m ago</span>
+</div>
+<h3 class="font-bold text-sm text-on-surface group-hover:text-primary transition-colors">Adv. Linguistics B2</h3>
+<p class="text-xs text-on-surface-variant mb-3">Student: Elena Rossi</p>
+<div class="flex items-center space-x-2">
+<div class="flex -space-x-2">
+<img alt="Candidate" class="w-6 h-6 rounded-full border-2 border-surface-container-lowest" data-alt="portrait of a confident woman with professional attire" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1i-KFiMgKyOf1nyHtU_kJwkoQhHv4wKZSXU9Ra0iTZJWQDv7B1OXy9_3USw3-qZ9-0gqKa2t1uhLySm-u4IrrxMAqT331eJlekMJJ4HCbEU2qVFQ6QoDnKmx5-38NQic81MX0O1VX3eExxrNPxLavhtiq0UnON-KolW42fgGncJNjNwSGze05aN-fJOt1OTs4uR7vusSsTT7AgtSsx-yItP2ia6dvz8rM2v5nOFQNwkAPIdK-iljTSkl3T6XIUP8JS6q2A7f5Dtxw"/>
+<img alt="Candidate" class="w-6 h-6 rounded-full border-2 border-surface-container-lowest" data-alt="portrait of a young man with a professional look" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwN5ptCYPQPvo0BFV-TWq57H41e1kqpTCjvk_uQPmu3NXx10FykrBVNDddbQ_2bRyD8mA9FWJSCBI8EVWvxBS5B1bMKFJdZsEdhb08_uvB7Ow1MqDRo4yp4b__kSXSyKr5FckEUvGa49FetgLxIBpW6ZoPiLz5wp2px3kLITrwH9sYJajKDgBFvMrT_oZog8piHC-Oy2UO-q39Y1BxG10IgXebwnmQYgbpY26RCsgUQWcdMXt4YQmyuC6m-VkDJUIb96a01SGLwVJ3"/>
+</div>
+<span class="text-[10px] font-medium text-primary">Match Lector</span>
+</div>
+</div>
+<!-- Request Card 2 -->
+<div class="bg-surface-container-lowest p-4 rounded-xl transition-all hover:bg-surface-container-low cursor-pointer group">
+<div class="flex justify-between items-start mb-2">
+<span class="text-[10px] font-black uppercase text-tertiary bg-tertiary-fixed px-2 py-0.5 rounded">Standard</span>
+<span class="text-[10px] text-outline">1h ago</span>
+</div>
+<h3 class="font-bold text-sm text-on-surface group-hover:text-primary transition-colors">Business English C1</h3>
+<p class="text-xs text-on-surface-variant mb-3">Student: Marcus Vane</p>
+<div class="flex items-center space-x-2">
+<div class="flex items-center justify-center w-6 h-6 rounded-full bg-surface-container-high border-2 border-surface-container-lowest">
+<span class="material-symbols-outlined text-[12px]">person_add</span>
+</div>
+<span class="text-[10px] font-medium text-on-surface-variant opacity-60">No suggestions</span>
+</div>
+</div>
+<!-- Request Card 3 -->
+<div class="bg-surface-container-low/40 p-4 rounded-xl border border-dashed border-outline-variant/30">
+<p class="text-[10px] text-center text-outline-variant font-medium">View 9 older requests</p>
+</div>
+</div>
+</div>
+<!-- CENTER COLUMN: Room Availability Grid -->
+<div class="flex-1 flex flex-col space-y-4">
+<div class="flex items-center justify-between">
+<div>
+<h2 class="text-2xl font-black tracking-tight text-tertiary leading-none mb-1">Room Availability</h2>
+<p class="text-xs text-on-surface-variant">Real-time studio &amp; lab status</p>
+</div>
+<div class="flex items-center space-x-2">
+<button class="px-3 py-1.5 bg-surface-container-high text-xs font-bold rounded-lg hover:bg-surface-container-highest transition-colors">Today</button>
+<div class="flex bg-surface-container-low rounded-lg p-1">
+<button class="p-1 hover:bg-surface-container-high rounded"><span class="material-symbols-outlined text-sm">chevron_left</span></button>
+<button class="p-1 hover:bg-surface-container-high rounded"><span class="material-symbols-outlined text-sm">chevron_right</span></button>
+</div>
+</div>
+</div>
+<div class="flex-1 bg-surface-container-low rounded-2xl p-4 overflow-hidden flex flex-col">
+<!-- Grid Header -->
+<div class="grid grid-cols-6 gap-2 mb-4">
+<div class="col-span-1"></div>
+<div class="text-center py-2 bg-surface rounded-lg text-[10px] font-bold uppercase tracking-widest text-outline">09:00</div>
+<div class="text-center py-2 bg-surface rounded-lg text-[10px] font-bold uppercase tracking-widest text-outline">10:00</div>
+<div class="text-center py-2 bg-surface rounded-lg text-[10px] font-bold uppercase tracking-widest text-outline">11:00</div>
+<div class="text-center py-2 bg-surface rounded-lg text-[10px] font-bold uppercase tracking-widest text-outline">12:00</div>
+<div class="text-center py-2 bg-surface rounded-lg text-[10px] font-bold uppercase tracking-widest text-outline">13:00</div>
+</div>
+<!-- Grid Rows -->
+<div class="flex-1 space-y-2 overflow-y-auto custom-scrollbar pr-2">
+<!-- Studio A -->
+<div class="grid grid-cols-6 gap-2 h-20">
+<div class="col-span-1 flex flex-col justify-center px-3 bg-surface-container-high rounded-xl">
+<span class="text-xs font-bold text-tertiary">Studio A</span>
+<span class="text-[9px] text-on-surface-variant opacity-60">Cap: 4 | Audio+</span>
+</div>
+<div class="col-span-2 bg-primary/10 rounded-xl border-l-4 border-primary p-2 relative group cursor-pointer">
+<p class="text-[10px] font-bold text-primary">IELTS Prep</p>
+<p class="text-[9px] text-primary/70">Lector: Sarah J.</p>
+<div class="absolute inset-0 bg-primary opacity-0 group-hover:opacity-5 transition-opacity rounded-xl"></div>
+</div>
+<div class="col-span-1 bg-surface-container-lowest/40 rounded-xl border border-dashed border-outline-variant/30 flex items-center justify-center">
+<span class="material-symbols-outlined text-outline-variant text-sm">add</span>
+</div>
+<div class="col-span-2 bg-secondary/10 rounded-xl border-l-4 border-secondary p-2">
+<p class="text-[10px] font-bold text-secondary">Podcasting 101</p>
+<p class="text-[9px] text-secondary-container/80">Internal Team</p>
+</div>
+</div>
+<!-- Lab 04 -->
+<div class="grid grid-cols-6 gap-2 h-20">
+<div class="col-span-1 flex flex-col justify-center px-3 bg-surface-container-high rounded-xl">
+<span class="text-xs font-bold text-tertiary">Lab 04</span>
+<span class="text-[9px] text-on-surface-variant opacity-60">Cap: 12 | Workstations</span>
+</div>
+<div class="col-span-1 bg-surface-container-lowest/40 rounded-xl border border-dashed border-outline-variant/30 flex items-center justify-center">
+<span class="material-symbols-outlined text-outline-variant text-sm">add</span>
+</div>
+<div class="col-span-3 bg-tertiary/5 rounded-xl border-l-4 border-tertiary p-2">
+<p class="text-[10px] font-bold text-tertiary">Group Workshop: Slavic Phonetics</p>
+<p class="text-[9px] text-on-surface-variant/70">Coord: J. Kovac</p>
+</div>
+<div class="col-span-1 bg-surface-container-lowest/40 rounded-xl border border-dashed border-outline-variant/30 flex items-center justify-center">
+<span class="material-symbols-outlined text-outline-variant text-sm">add</span>
+</div>
+</div>
+<!-- Private Booth 1 -->
+<div class="grid grid-cols-6 gap-2 h-20">
+<div class="col-span-1 flex flex-col justify-center px-3 bg-surface-container-high rounded-xl">
+<span class="text-xs font-bold text-tertiary">Booth 01</span>
+<span class="text-[9px] text-on-surface-variant opacity-60">Cap: 1 | Soundproof</span>
+</div>
+<div class="col-span-5 bg-surface-container-lowest rounded-xl flex items-center justify-center space-x-2">
+<span class="material-symbols-outlined text-outline-variant text-xs">event_available</span>
+<span class="text-[10px] font-medium text-outline-variant uppercase tracking-widest">Available for entire morning block</span>
+</div>
+</div>
+<!-- Private Booth 2 -->
+<div class="grid grid-cols-6 gap-2 h-20">
+<div class="col-span-1 flex flex-col justify-center px-3 bg-surface-container-high rounded-xl">
+<span class="text-xs font-bold text-tertiary">Booth 02</span>
+<span class="text-[9px] text-on-surface-variant opacity-60">Cap: 1 | Soundproof</span>
+</div>
+<div class="col-span-1 bg-primary/10 rounded-xl border-l-4 border-primary p-2">
+<p class="text-[10px] font-bold text-primary">Trial Lesson</p>
+</div>
+<div class="col-span-4 bg-surface-container-lowest/40 rounded-xl border border-dashed border-outline-variant/30 flex items-center justify-center">
+<span class="material-symbols-outlined text-outline-variant text-sm">add</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- RIGHT COLUMN: Staff Shift Matrix -->
+<div class="w-96 flex flex-col space-y-4 shrink-0">
+<div class="flex items-center justify-between px-2">
+<h2 class="text-sm font-bold tracking-tighter uppercase text-tertiary">Staff Availability</h2>
+<button class="text-primary text-[10px] font-bold hover:underline">Manage Roster</button>
+</div>
+<div class="flex-1 flex flex-col space-y-4">
+<!-- Staff Matrix Card -->
+<div class="bg-surface-container-high rounded-2xl p-5 flex-1 flex flex-col">
+<div class="space-y-6 flex-1">
+<!-- Staff Member 1 -->
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-3">
+<img alt="Sarah J." class="w-10 h-10 rounded-lg object-cover" data-alt="close up of an artistic woman with professional lighting and warm tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwgFdr3tmg_yLpgj61Ow0geTFxSUpZgNyQ0TZUoUZPsuNcG2visL1rb_17eerwYLDUpeqgprGyKuIa43wd3Q4bckhjILplG8mVss2iVoU_nU-rPLcFnFYnGZzfvJW4jb2TmSA3DDQ8QFBY-rVqoKoxrgSIo_SRpdrLXNrtGO_JBT_K8oZMe_kFhpcJQ21n7LOPgX9fkFRgPLLYNesovVTUdAVxtnyhz4IwN83k7jkUcXbEuVRLrQ_PIxgCmegwoXIof-eB-rh-wOY4"/>
+<div>
+<p class="text-sm font-bold text-tertiary">Sarah Jenkins</p>
+<p class="text-[10px] text-on-surface-variant">Senior Lector • EN/FR</p>
+</div>
+</div>
+<div class="flex space-x-1">
+<div class="w-2 h-6 bg-secondary rounded-full"></div>
+<div class="w-2 h-6 bg-secondary rounded-full"></div>
+<div class="w-2 h-6 bg-secondary rounded-full"></div>
+<div class="w-2 h-6 bg-surface-container-lowest rounded-full"></div>
+<div class="w-2 h-6 bg-surface-container-lowest rounded-full"></div>
+</div>
+</div>
+<!-- Staff Member 2 -->
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-3">
+<img alt="David K." class="w-10 h-10 rounded-lg object-cover" data-alt="headshot of a man with a beard in a casual yet professional setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmxnsXUi3xN1HyDEcAkum3fz6uyH2OliLQv9ffIYmVVLTVeEz1-XSMBl8FpYCPw8KX6gU5pKpTEqYhitEiwXfsHVG9BFHU8vgCbEdY8TBDQQvE_mQVxv1OQxhjPcC7tY3dRpeRlvIRjaJT9BOEqqehUl15_6lTpXjquR4D6a7GaopKj8G5t0Pnczia7qIXSQsF-4RhZiZcw4h3jzzCLucXQLTdtGxamPakw_xfjj1NmbcY3d71URLd1NJr7Rs5rb_YBl4fBE2g4MeO"/>
+<div>
+<p class="text-sm font-bold text-tertiary">David Kovac</p>
+<p class="text-[10px] text-on-surface-variant">Coordinator • SK/EN</p>
+</div>
+</div>
+<div class="flex space-x-1">
+<div class="w-2 h-6 bg-primary rounded-full"></div>
+<div class="w-2 h-6 bg-primary rounded-full"></div>
+<div class="w-2 h-6 bg-primary rounded-full"></div>
+<div class="w-2 h-6 bg-primary rounded-full"></div>
+<div class="w-2 h-6 bg-primary rounded-full"></div>
+</div>
+</div>
+<!-- Staff Member 3 -->
+<div class="flex items-center justify-between opacity-50">
+<div class="flex items-center space-x-3">
+<div class="w-10 h-10 rounded-lg bg-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-outline">person_off</span>
+</div>
+<div>
+<p class="text-sm font-bold text-tertiary">Marta Bielik</p>
+<p class="text-[10px] text-on-surface-variant italic">Out of Office</p>
+</div>
+</div>
+<div class="flex space-x-1">
+<div class="w-2 h-6 bg-surface-container-lowest rounded-full"></div>
+<div class="w-2 h-6 bg-surface-container-lowest rounded-full"></div>
+<div class="w-2 h-6 bg-surface-container-lowest rounded-full"></div>
+<div class="w-2 h-6 bg-surface-container-lowest rounded-full"></div>
+<div class="w-2 h-6 bg-surface-container-lowest rounded-full"></div>
+</div>
+</div>
+</div>
+<!-- Quick Shift Stats -->
+<div class="mt-8 pt-6 border-t border-outline-variant/20 grid grid-cols-2 gap-4">
+<div class="bg-surface-container-lowest p-3 rounded-xl">
+<p class="text-[10px] font-bold text-outline uppercase mb-1">Active Slots</p>
+<p class="text-2xl font-black text-primary">18/24</p>
+</div>
+<div class="bg-surface-container-lowest p-3 rounded-xl">
+<p class="text-[10px] font-bold text-outline uppercase mb-1">Load Balance</p>
+<p class="text-2xl font-black text-secondary">75%</p>
+</div>
+</div>
+</div>
+<!-- Notification Mini-Feed -->
+<div class="h-48 bg-[#0300a9] text-white rounded-2xl p-5 flex flex-col justify-between overflow-hidden relative">
+<div class="relative z-10">
+<h4 class="text-xs font-black uppercase tracking-widest opacity-60 mb-2">Network Alert</h4>
+<p class="text-sm font-medium leading-relaxed">System-wide update at 18:00 CET. Please ensure all manual matches are committed before lockdown.</p>
+</div>
+<div class="flex items-center justify-between relative z-10">
+<span class="text-[10px] opacity-70">Talkin.sk Admin</span>
+<span class="material-symbols-outlined text-secondary text-xl">warning</span>
+</div>
+<!-- Decorative Gradient Asset -->
+<div class="absolute -bottom-10 -right-10 w-32 h-32 bg-[#d8ef00] opacity-20 blur-3xl rounded-full"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Floating Action Button (FAB) - Contextual for Schedule -->
+<button class="fixed bottom-8 right-8 w-14 h-14 bg-secondary rounded-xl shadow-2xl flex items-center justify-center text-on-secondary hover:scale-105 active:scale-95 transition-transform group">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add_task</span>
+<span class="absolute right-full mr-4 bg-tertiary text-white text-[10px] px-3 py-1 rounded-full whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">Schedule New Session</span>
+</button>
+</main>
+</body></html>
