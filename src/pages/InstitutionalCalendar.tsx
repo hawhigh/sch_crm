@@ -18,50 +18,55 @@ import {
 } from 'lucide-react';
 import { cn } from '../lib/utils';
 import { useCalendar } from '../lib/api';
+import { useModalStore } from '../hooks/useModal';
 
 const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 const hours = Array.from({ length: 10 }, (_, i) => i + 8); // 8:00 to 17:00
 
 export const InstitutionalCalendar = () => {
+  const { openModal } = useModalStore();
   const [view, setView] = useState<'grid' | 'list'>('grid');
   const { data: calendarEvents = [], isLoading, error } = useCalendar();
   
   return (
-    <div className="space-y-16 animate-in fade-in slide-in-from-bottom-8 duration-700 max-w-[1400px] mx-auto p-8">
+    <div className="space-y-16 animate-fade-up max-w-[1500px] mx-auto p-12">
       {/* Editorial Header */}
-      <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 border-b border-[#454557]/5 pb-10">
-        <div className="max-w-2xl">
-          <div className="flex items-center gap-4 mb-6">
-            <div className="w-12 h-12 rounded-[16px] bg-[#303030] flex items-center justify-center text-white shadow-lg">
-              <CalendarIcon size={24} />
+      <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-12 border-b border-[#454557]/5 pb-10">
+        <div className="max-w-3xl">
+          <div className="flex items-center gap-4 mb-8">
+            <div className="w-14 h-14 rounded-[20px] bg-[#303030] flex items-center justify-center text-[var(--secondary)] shadow-2xl rotate-3">
+              <CalendarIcon size={28} />
             </div>
-            <span className="text-[#454557]/60 text-[10px] font-bold uppercase tracking-[0.3em]">Temporal Orchestration</span>
+            <span className="text-primary text-[10px] font-black uppercase tracking-[0.4em]">Temporal Orchestration</span>
           </div>
-          <h1 className="display-lg text-[#303030] mb-6">
-            Institutional <span className="italic font-normal text-primary">Calendar</span>
+          <h1 className="display-lg text-[#303030] mb-8 leading-none">
+            Institutional <span className="italic font-normal text-primary">Ledger</span>
           </h1>
-          <p className="text-[#454557] text-xl font-medium leading-relaxed max-w-xl mb-4">
-            Syncing educational cycles across <span className="text-primary font-bold uppercase tracking-widest text-sm">12 classes</span> and <span className="text-[var(--secondary)] font-bold uppercase tracking-widest text-[#5a6400] text-sm">8 curators</span>. Unified view of lessons, tasks, and exhibitions.
+          <p className="text-[#454557]/80 text-2xl font-medium leading-relaxed max-w-2xl mb-4 italic">
+            Syncing educational cycles across <span className="text-[#303030] font-black not-italic border-b-2 border-primary/20">12 CLASSES</span> and <span className="text-[#303030] font-black not-italic border-b-2 border-[var(--secondary)]/20">8 CURATORS</span>. Unified view of lessons, tasks, and exhibitions.
           </p>
         </div>
         
-        <div className="flex items-center gap-4 bg-white p-2 rounded-[24px] shadow-sm border border-[#454557]/5">
+        <div className="flex items-center gap-5 bg-white p-2.5 rounded-[32px] shadow-2xl border border-white/40 backdrop-blur-md">
           <button 
             onClick={() => setView('grid')}
-            className={cn("p-4 rounded-[16px] transition-all", view === 'grid' ? "bg-[#303030] text-white shadow-lg" : "text-[#454557]/40 hover:text-[#303030] hover:bg-surface-low")}
+            className={cn("p-5 rounded-[22px] transition-all", view === 'grid' ? "bg-[#303030] text-white shadow-2xl" : "text-[#454557]/30 hover:text-primary hover:bg-surface-low")}
           >
-            <LayoutGrid size={24} />
+            <LayoutGrid size={28} />
           </button>
           <button 
             onClick={() => setView('list')}
-            className={cn("p-4 rounded-[16px] transition-all", view === 'list' ? "bg-[#303030] text-white shadow-lg" : "text-[#454557]/40 hover:text-[#303030] hover:bg-surface-low")}
+            className={cn("p-5 rounded-[22px] transition-all", view === 'list' ? "bg-[#303030] text-white shadow-2xl" : "text-[#454557]/30 hover:text-primary hover:bg-surface-low")}
           >
-            <List size={24} />
+            <List size={28} />
           </button>
-          <div className="w-px h-8 bg-[#454557]/10 mx-2" />
-          <button className="px-6 py-4 bg-primary text-white rounded-[16px] font-bold text-xs uppercase tracking-[0.2em] flex items-center gap-3 hover:opacity-90 transition-opacity shadow-md">
-            <Plus size={18} />
-            <span>Schedule Task</span>
+          <div className="w-px h-10 bg-[#303030]/5 mx-3" />
+          <button 
+            onClick={() => openModal('SCHEDULE_TASK')}
+            className="px-10 py-5 bg-primary text-white rounded-[22px] font-black text-xs uppercase tracking-[0.3em] flex items-center gap-4 hover:opacity-90 transition-all shadow-xl hover:-translate-y-1 active:scale-95"
+          >
+            <Plus size={22} />
+            <span>Schedule TASK</span>
           </button>
         </div>
       </div>

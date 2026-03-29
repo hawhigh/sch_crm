@@ -106,7 +106,7 @@ export const Shell = ({ children, role, onLogout }: ShellProps) => {
                 )} 
               />
               <span className={cn(
-                "text-[11px] font-bold tracking-[0.2em] uppercase",
+                "text-[10px] font-black tracking-[0.15em] uppercase truncate",
                 location.pathname === item.path ? "text-white" : ""
               )}>
                 {item.label}

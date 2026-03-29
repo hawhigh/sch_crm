@@ -1,0 +1,11 @@
+node_modules
+dist
+.git
+.env
+*.md
+.DS_Store
+tmp
+stitch_design
+stitch.zip
+maps
+D9vy0.jpg

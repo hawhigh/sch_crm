@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useAuth } from './hooks/useAuth';
@@ -14,6 +15,7 @@ import { ParentDashboard } from './pages/ParentDashboard';
 import { OwnerDashboard } from './pages/OwnerDashboard';
 import { SupervisorDashboard } from './pages/SupervisorDashboard';
 import { CoordinatorDashboard } from './pages/CoordinatorDashboard';
+import { GlobalModal } from './components/ui/Modal';
 
 const queryClient = new QueryClient();
 
@@ -27,22 +29,23 @@ function App() {
     return <Login />;
   }
 
-  // Role-based root dashboard
-  const RoleDashboard = () => {
-    if (role === 'owner') return <OwnerDashboard />;
-    if (role === 'supervisor') return <SupervisorDashboard />;
-    if (role === 'coordinator') return <CoordinatorDashboard />;
-    if (role === 'parent') return <ParentDashboard />;
-    if (role === 'student') return <StudentDashboard />;
-    return <Dashboard />;
-  };
+  const PortalEntry = useMemo(() => {
+    switch (role) {
+      case 'owner': return <OwnerDashboard />;
+      case 'supervisor': return <SupervisorDashboard />;
+      case 'coordinator': return <CoordinatorDashboard />;
+      case 'parent': return <ParentDashboard />;
+      case 'student': return <StudentDashboard />;
+      default: return <Dashboard />;
+    }
+  }, [role]);
 
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <Shell role={role} onLogout={logout}>
           <Routes>
-            <Route path="/" element={<RoleDashboard />} />
+            <Route path="/" element={PortalEntry} />
             <Route path="/lessons" element={<CurriculumStudio />} />
             <Route path="/parent" element={<ParentDashboard />} />
             <Route path="/library" element={<KnowledgeLibrary />} />
@@ -50,9 +53,10 @@ function App() {
             <Route path="/calendar" element={<InstitutionalCalendar />} />
             <Route path="/messages" element={<Messenger />} />
             <Route path="/student" element={<StudentDashboard />} />
-            <Route path="/settings" element={<RoleDashboard />} />
+            <Route path="/settings" element={PortalEntry} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
+          <GlobalModal />
         </Shell>
       </BrowserRouter>
     </QueryClientProvider>

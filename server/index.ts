@@ -11,8 +11,17 @@ import { PrismaClient, Role, LessonStatus } from '@prisma/client';
 
 import pg from 'pg';
 import { PrismaPg } from '@prisma/adapter-pg';
+import { createServer } from 'http';
+import { Server } from 'socket.io';
 
 const app = express();
+const httpServer = createServer(app);
+const io = new Server(httpServer, {
+  cors: {
+    origin: '*',
+    methods: ['GET', 'POST']
+  }
+});
 const pool = new pg.Pool({ connectionString: process.env.DATABASE_URL as string });
 const adapter = new PrismaPg(pool);
 const prisma = new PrismaClient({ adapter });
@@ -59,6 +68,19 @@ const checkRole = (roles: Role[]) => {
     next();
   };
 };
+// --- Socket.io Hub ---
+io.on('connection', (socket) => {
+  console.log('📡 Institutional Node Connected:', socket.id);
+  
+  socket.on('join-curation-channel', (conversationId) => {
+    socket.join(conversationId);
+    console.log(`📡 Node ${socket.id} joined channel: ${conversationId}`);
+  });
+
+  socket.on('disconnect', () => {
+    console.log('📡 Institutional Node Disconnected:', socket.id);
+  });
+});
 
 // --- Routes ---
 
@@ -681,8 +703,15 @@ app.post('/api/messenger/conversations/:id/messages', authenticateToken, async (
         content,
         senderId: user.id,
         conversationId: id
+      },
+      include: {
+        sender: { select: { id: true, name: true, role: true } }
       }
     });
+
+    // Emit real-time message to curation channel
+    io.to(id).emit('institutional-pulse', message);
+    
     res.json(message);
   } catch (err) {
     res.status(500).json({ error: 'Failed to send message' });
@@ -734,11 +763,11 @@ async function main() {
       res.sendFile(path.join(__dirname, '../dist/index.html'));
     });
 
-    app.listen(port, () => {
-      console.log(`🚀 Server running on http://localhost:${port}`);
+    httpServer.listen(port, () => {
+      console.log(`🚀 Institutional OS running on http://localhost:${port}`);
     });
   } catch (error) {
-    console.error('❌ Failed to start server:', error);
+    console.error('❌ Institutional Engine failure:', error);
     process.exit(1);
   }
 }

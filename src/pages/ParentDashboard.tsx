@@ -75,7 +75,7 @@ export const ParentDashboard = () => {
   );
 
   if (error) return (
-    <div className="p-10 bg-surface-low text-primary rounded-[40px] flex items-center gap-6 border border-primary/10">
+    <div className="p-10 bg-surface-low text-primary rounded-[40px] flex items-center gap-6 border border-primary/10 animate-fade-up">
       <div className="w-16 h-16 bg-white rounded-[24px] shadow-sm flex items-center justify-center text-primary">
         <AlertCircle size={32} />
       </div>
@@ -97,87 +97,88 @@ export const ParentDashboard = () => {
   const studentFirstName = data.student.name.split(' ')[0];
 
   return (
-    <div className="space-y-16 animate-in fade-in slide-in-from-bottom-6 duration-1000 ease-out">
+    <div className="space-y-16 animate-fade-up">
       
       {/* Editorial Title & Quick Actions */}
       <header className="flex flex-col xl:flex-row xl:items-end justify-between gap-8 border-b border-[#454557]/10 pb-12">
-        <div className="max-w-2xl">
+        <div className="max-w-3xl">
           <div className="flex items-center gap-3 mb-6">
             <Badge variant="secondary" size="md">Institutional Progress</Badge>
-            <span className="text-[10px] font-bold text-[#454557]/40 uppercase tracking-[0.2em]">Student ID: {data.student.studentId}</span>
+            <span className="text-[10px] font-bold text-[#454557]/40 uppercase tracking-[0.2em]">Student Node: {data.student.studentId}</span>
           </div>
           <h1 className="display-lg text-[#303030]">
             {studentFirstName}'s English <span className="italic font-normal text-primary">Odyssey</span>
           </h1>
-          <p className="text-[#454557] text-xl leading-relaxed font-medium max-w-xl mt-4">
-            Welcome back. <span className="font-bold text-[#303030]">{studentFirstName}</span> is currently navigating knowledge in <span className="text-primary font-bold uppercase tracking-widest">{data.student.className}</span>.
+          <p className="text-[#454557] text-xl leading-relaxed font-medium mt-6">
+            Establishing the temporal and spatial schemas for <span className="text-[#303030] font-black">{studentFirstName}'s</span> learning trajectory within the <span className="text-primary font-black">{data.student.className}</span> cluster.
           </p>
         </div>
         
         <div className="flex gap-4">
-          <Button variant="outline" icon={<Calendar size={18} />}>View Schedule</Button>
-          <Button variant="primary" icon={<MessageCircle size={18} />}>Contact Lector</Button>
+          <Button variant="outline" icon={<Calendar size={18} />}>Institutional Calendar</Button>
+          <Button variant="primary" icon={<MessageCircle size={18} />}>Communicate with Lector</Button>
         </div>
       </header>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <StatCard label="Current Lesson" value={data.stats.currentLesson} description={`Slot ${data.stats.currentLesson} of ${data.stats.totalLessons} total progress.`} icon={Clock} variant="light" />
-        <StatCard label="Energy Index" value="88%" description="Average student engagement across recent modules." icon={Zap} variant="dark" />
-        <StatCard label="Subject Mastery" value={data.stats.mastery} description="Verified competency in current level proficiency targets." icon={Star} variant="primary" />
-        <StatCard label="Attendance" value={data.stats.attendance} description="Consistent presence in live institutional sessions." icon={CheckCircle2} variant="secondary" />
+      {/* Hero Metrics */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 animate-fade-up stagger-1">
+        <StatCard label="Current Lesson" value={data.stats.currentLesson} description={`Slot ${data.stats.currentLesson} of ${data.stats.totalLessons} total.`} icon={Clock} variant="light" className="card" />
+        <StatCard label="Energy Index" value="88%" description="Aggregated student engagement metrics." icon={Zap} variant="dark" className="card shadow-2xl electric-glow" />
+        <StatCard label="Subject Mastery" value={data.stats.mastery} description="Verified competency in level proficiency." icon={Star} variant="primary" className="card" />
+        <StatCard label="Attendance" value={data.stats.attendance} description="Consistent presence in live sessions." icon={CheckCircle2} variant="secondary" className="card shadow-xl" />
       </div>
 
-      <div className="grid grid-cols-1 xl:grid-cols-12 gap-10 pt-6">
+      <div className="grid grid-cols-1 xl:grid-cols-12 gap-12 pt-6 animate-fade-up stagger-2">
         
-        {/* Left Col: Analytics & Materials (60%) */}
+        {/* Left Column: Analytics & Content Archive (60%) */}
         <section className="xl:col-span-8 space-y-12">
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <PerformanceChart />
             
-            <div className="bg-[#303030] p-10 rounded-[40px] text-white flex flex-col justify-between relative overflow-hidden group shadow-2xl">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 blur-[60px] rounded-full translate-x-1/2 -translate-y-1/2 group-hover:scale-150 transition-transform duration-1000" />
+            <div className="bg-[#303030] p-12 rounded-[48px] text-white flex flex-col justify-between relative overflow-hidden group shadow-2xl electric-glow">
+              <div className="absolute top-0 right-0 w-80 h-80 bg-primary/30 blur-[100px] rounded-full translate-x-1/2 -translate-y-1/2 group-hover:scale-150 transition-transform duration-1000" />
               
               <div className="relative z-10">
-                <Badge variant="secondary" className="mb-6">System Insight</Badge>
-                <h4 className="serif text-2xl font-bold tracking-tight leading-relaxed text-white/90 italic">
-                  "{studentFirstName} is developing a sharp eye for editorial structure. Exceptional progress detected in syntax analysis."
+                <Badge variant="secondary" size="sm" className="mb-8">Curator Insight</Badge>
+                <h4 className="serif text-3xl font-bold tracking-tight leading-relaxed text-white/90 italic">
+                  "{studentFirstName} is developing a sharp eye for <span className="text-[var(--secondary)]">editorial structure</span>. Exceptional mastery of syntax detected."
                 </h4>
               </div>
               
-              <div className="relative z-10 pt-8 border-t border-white/10 flex items-center justify-between">
+              <div className="relative z-10 pt-10 border-t border-white/5 flex items-center justify-between">
                 <div>
-                  <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40">Latest Eval</p>
-                  <p className="text-sm font-bold text-[var(--secondary)]">B2+ Proficiency</p>
+                  <p className="text-[10px] font-black uppercase tracking-[0.3em] text-white/20 mb-1">Status Report</p>
+                  <p className="text-xl font-bold text-[var(--secondary)]">B2+ PROFICIENCY</p>
                 </div>
-                <Button variant="ghost" size="sm" className="text-white hover:bg-white/10" icon={<ArrowRight size={16} />}>Detailed Report</Button>
+                <Button variant="ghost" size="sm" className="text-white hover:bg-white/10" icon={<ArrowRight size={18} />}>Detailed Metrics</Button>
               </div>
             </div>
           </div>
 
-          <div className="space-y-8">
-            <div className="flex items-center justify-between border-b border-[#454557]/10 pb-6">
-              <h3 className="serif text-3xl font-bold text-[#303030] italic">Curated <span className="not-italic">Learning Flow</span></h3>
-              <Button variant="ghost" size="sm">Browse Archive</Button>
+          <div className="space-y-10">
+            <div className="flex items-center justify-between border-b border-[#454557]/10 pb-8">
+              <h3 className="serif text-4xl font-bold text-[#303030] italic">Content <span className="not-italic">Archive Flow</span></h3>
+              <Button variant="ghost" size="sm" icon={<FileText size={18} />}>Browse Institutional Repository</Button>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                {data.recentMaterials.map((item: any, i: number) => (
-                  <div key={i} className="bg-surface-low p-8 rounded-[40px] group hover:bg-white border border-transparent hover:border-[#454557]/5 transition-all duration-500 cursor-pointer flex flex-col justify-between min-h-[240px]">
-                     <div className="flex items-center justify-between mb-8">
-                       <div className="w-14 h-14 rounded-[18px] bg-white flex items-center justify-center text-[#303030] group-hover:bg-primary group-hover:text-white transition-all duration-300 shadow-sm">
-                         {item.type.includes('Video') ? <Video size={24} /> : item.type.includes('Audio') ? <Headphones size={24} /> : <FileText size={24} />}
+                  <div key={item.title + i} className="bg-surface-low p-10 rounded-[44px] group hover:bg-white border border-transparent hover:border-[#454557]/5 transition-all duration-700 cursor-pointer flex flex-col justify-between min-h-[280px] shadow-sm hover:shadow-2xl hover:-translate-y-1">
+                     <div className="flex items-center justify-between mb-10">
+                       <div className="w-16 h-16 rounded-[24px] bg-white flex items-center justify-center text-[#303030] group-hover:bg-primary group-hover:text-white transition-all duration-500 shadow-sm">
+                         {item.type.includes('Video') ? <Video size={32} /> : item.type.includes('Audio') ? <Headphones size={32} /> : <FileText size={32} />}
                        </div>
-                       <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#454557]/30">{item.date}</span>
+                       <Badge variant="light" size="xs">{item.date}</Badge>
                      </div>
   
                      <div>
-                       <h4 className="text-xl font-bold text-[#303030] mb-2 group-hover:text-primary transition-colors">{item.title}</h4>
-                       <p className="text-xs font-bold text-[#454557]/40 uppercase tracking-widest mb-8">{item.type} • {item.size || '1.0 MB'}</p>
+                       <h4 className="text-2xl font-bold text-[#303030] mb-3 group-hover:text-primary transition-colors leading-tight">{item.title}</h4>
+                       <p className="text-[10px] font-black text-[#454557]/40 uppercase tracking-[0.2em] mb-10">{item.type} • {item.size || '1.0 MB'}</p>
   
-                       <div className="flex items-center gap-3">
-                         <Button variant="outline" className="flex-1 h-12 text-[10px]" size="sm">Preview</Button>
-                         <Button variant="secondary" className="w-12 h-12 p-0 rounded-xl" size="sm" icon={<Download size={18} />} />
+                       <div className="flex items-center gap-4">
+                         <Button variant="outline" className="flex-1 h-14 rounded-[20px] text-[10px] font-black" size="sm">PREVIEW</Button>
+                         <Button variant="secondary" className="w-14 h-14 p-0 rounded-[20px] shadow-sm transform group-hover:scale-110" size="sm" icon={<Download size={20} />} />
                        </div>
                      </div>
                   </div>
@@ -186,61 +187,66 @@ export const ParentDashboard = () => {
           </div>
         </section>
 
-        {/* Right Col: Teacher Pulses & Achievements (40%) */}
-        <aside className="xl:col-span-4 space-y-10">
-          <div className="space-y-8">
-            <div className="flex items-center justify-between border-b border-[#454557]/10 pb-6">
-              <h3 className="serif text-3xl font-bold text-[#303030] italic">Lector <span className="not-italic">Pulses</span></h3>
-              <Badge variant="dark">Live</Badge>
+        {/* Right Column: Lector Pulses & Milestones (40%) */}
+        <aside className="xl:col-span-4 space-y-12">
+          <div className="space-y-10">
+            <div className="flex items-center justify-between border-b border-[#454557]/10 pb-8">
+              <h3 className="serif text-4xl font-bold text-[#303030] italic">Lector <span className="not-italic">Pulses</span></h3>
+              <Badge variant="primary">LIVE STREAM</Badge>
             </div>
             
-            <div className="bg-surface-low rounded-[40px] p-8 space-y-6 shadow-sm">
-               {lectorPulses.map((pulse: any, i: number) => (
-                 <div key={i} className="bg-white p-6 rounded-[32px] border border-[#454557]/5 space-y-4">
-                    <div className="flex items-center gap-4">
-                      <div className={cn(
-                        "w-12 h-12 rounded-2xl flex items-center justify-center",
-                        pulse.type === 'zap' ? "bg-primary/10 text-primary" : "bg-[var(--secondary)]/20 text-[#5a6400]"
-                      )}>
-                        {pulse.type === 'zap' ? <Zap size={20} /> : <CheckCircle2 size={20} />}
-                      </div>
-                      <div>
-                        <p className="text-[10px] uppercase font-bold tracking-[0.2em] text-[#303030]">{pulse.name}</p>
-                        <p className="text-[10px] font-bold text-[#454557]/40 uppercase tracking-widest">{pulse.time}</p>
-                      </div>
+            <div className="bg-surface-low rounded-[48px] p-8 space-y-4 shadow-sm relative overflow-hidden min-h-[600px]">
+               <div className="absolute inset-0 bg-white/20 backdrop-blur-2xl pointer-events-none" />
+               <div className="relative z-10 space-y-4">
+                 {lectorPulses.map((pulse: any, i: number) => (
+                    <div key={pulse.name + i} className="bg-white p-8 rounded-[36px] border border-primary/5 space-y-6 hover:shadow-2xl transition-all duration-700 hover:-translate-y-1 group">
+                       <div className="flex items-center gap-5">
+                         <div className={cn(
+                           "w-14 h-14 rounded-[20px] flex items-center justify-center shadow-sm transition-transform group-hover:scale-110",
+                           pulse.type === 'zap' ? "bg-primary text-white" : "bg-[var(--secondary)] text-[#303030]"
+                         )}>
+                           {pulse.type === 'zap' ? <Zap size={24} /> : <CheckCircle2 size={24} />}
+                         </div>
+                         <div>
+                           <p className="text-[10px] uppercase font-black tracking-[0.3em] text-[#303030] mb-1">{pulse.name}</p>
+                           <p className="text-[10px] font-bold text-[#454557]/20 uppercase tracking-widest">{pulse.time}</p>
+                         </div>
+                       </div>
+                       <p className="text-base font-medium text-[#454557] italic leading-relaxed decoration-primary/10">
+                         "{pulse.msg}"
+                       </p>
                     </div>
-                    <p className="text-sm font-medium text-[#454557] italic leading-relaxed">
-                      "{pulse.msg}"
-                    </p>
-                 </div>
-               ))}
-               {lectorPulses.length === 0 && (
-                 <div className="p-10 text-center border border-dashed border-[#454557]/10 rounded-[32px]">
-                   <p className="text-[10px] font-bold text-[#454557]/40 uppercase tracking-widest">No Recent Pulses</p>
-                 </div>
-               )}
+                 ))}
+                 {lectorPulses.length === 0 && (
+                    <div className="p-16 text-center border border-dashed border-[#454557]/10 rounded-[40px] flex flex-col items-center justify-center">
+                       <p className="text-[10px] font-black text-[#454557]/30 uppercase tracking-[0.3em]">Temporal Silence</p>
+                    </div>
+                 )}
+               </div>
             </div>
           </div>
 
-          <div className="bg-primary p-12 rounded-[40px] text-white relative overflow-hidden group hover:shadow-2xl transition-all duration-700 shadow-xl">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 blur-[80px] rounded-full translate-x-1/4 -translate-y-1/4 group-hover:scale-150 duration-1000" />
+          <div className="bg-primary p-12 rounded-[48px] text-white relative overflow-hidden group hover:shadow-2xl transition-all duration-700 shadow-xl electric-glow">
+            <div className="absolute top-0 right-0 w-80 h-80 bg-white/10 blur-[100px] rounded-full translate-x-1/4 -translate-y-1/4 group-hover:scale-150 duration-1000" />
+            <div className="absolute bottom-0 left-0 w-48 h-48 bg-[var(--secondary)]/10 blur-[60px] rounded-full translate-x-[-20%] translate-y-[20%]" />
             
-            <div className="flex items-center gap-6 mb-10 relative z-10">
-              <div className="w-16 h-16 rounded-[22px] bg-white text-primary flex items-center justify-center shadow-xl rotate-3 group-hover:rotate-0 transition-transform">
-                <Star size={34} fill="currentColor" />
+            <div className="flex items-center gap-6 mb-12 relative z-10">
+              <div className="w-20 h-20 rounded-[28px] bg-white text-primary flex items-center justify-center shadow-2xl rotate-3 group-hover:rotate-0 transition-all duration-700">
+                <Star size={44} fill="currentColor" />
               </div>
-              <div>
-                <h4 className="text-2xl font-black text-white tracking-tight leading-none mb-2">Grammar Architect</h4>
-                <Badge variant="secondary">Achievement Unlocked</Badge>
+              <div className="flex-1">
+                <p className="text-[10px] font-black uppercase tracking-[0.4em] text-white/40 mb-2">Institutional Reward</p>
+                <h4 className="text-3xl font-black text-white tracking-tight leading-none mb-4 italic">Grammar <br/>Architect</h4>
+                <Badge variant="secondary" size="xs">RARE PROTOCOL</Badge>
               </div>
             </div>
             
-            <p className="text-lg font-medium text-white/80 leading-relaxed mb-12 relative z-10 italic">
-              "Exceptional mastery of institutional structure and syntax."
+            <p className="text-xl font-medium text-white/70 leading-relaxed mb-16 relative z-10 italic">
+              "Exceptional mastery of institutional syntax and complex logical structures."
             </p>
             
-            <Button variant="secondary" className="w-full h-16 rounded-[24px]" icon={<ArrowRight size={18} />}>
-              Acknowledge Progress
+            <Button variant="secondary" className="w-full h-18 rounded-[24px] font-black uppercase tracking-[0.2em] shadow-xl transform active:scale-95" icon={<ArrowRight size={20} />}>
+              Acknowledge Evolution
             </Button>
           </div>
         </aside>

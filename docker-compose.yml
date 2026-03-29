@@ -1,24 +1,48 @@
 version: "3.9"
 
 services:
-  t:
+  app:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: talkin_crm1
+    container_name: talkin_crm_app
     restart: unless-stopped
     ports:
-      - "3099:3033"
+      - "3033:3033"
     environment:
       NODE_ENV: production
       PORT: 3033
-      DATABASE_URL: ${DATABASE_URL}
-      JWT_SECRET: ${JWT_SECRET}
+      DATABASE_URL: postgres://postgres:postgres@db:5432/talkin_crm
+      JWT_SECRET: ${JWT_SECRET:-talkin-crm-secret-key-123}
+    depends_on:
+      db:
+        condition: service_healthy
     networks:
-      - ai-platform_default
-    labels:
-      - "com.docker.compose.project=talkin_crm1"
+      - talkin_network
+
+  db:
+    image: postgres:15-alpine
+    container_name: talkin_crm_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: talkin_crm
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - talkin_network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
 networks:
-  ai-platform_default:
-    external: true
+  talkin_network:
+    driver: bridge
+
+volumes:
+  pgdata:

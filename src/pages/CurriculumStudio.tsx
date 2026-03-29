@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Search, Plus, Filter, FileText, PlayCircle, Headphones, UploadCloud, Share2, FileUp, Save, GripVertical } from 'lucide-react';
 import { cn } from '../lib/utils';
-import { useQuery } from '@tanstack/react-query';
 import { Button } from '../components/ui/Button';
 import { Badge } from '../components/ui/Badge';
 import { Input } from '../components/ui/Input';
