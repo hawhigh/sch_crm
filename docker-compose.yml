@@ -8,7 +8,7 @@ services:
     container_name: talkin_crm_app
     restart: unless-stopped
     ports:
-      - "3033:3033"
+      - "3099:3033"
     environment:
       NODE_ENV: production
       PORT: 3033
@@ -28,8 +28,8 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: talkin_crm
-    ports:
-      - "5432:5432"
+    # ports:
+    #   - "5432:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
     networks:

@@ -2,7 +2,7 @@
 set -e
 
 echo "🔧 Running Prisma schema push..."
-npx prisma db push --skip-generate
+npx prisma db push
 
 echo "🌱 Running seed..."
 npx tsx prisma/seed.ts || echo "⚠️  Seed skipped (may already be populated)"

@@ -25,7 +25,7 @@ const io = new Server(httpServer, {
 const pool = new pg.Pool({ connectionString: process.env.DATABASE_URL as string });
 const adapter = new PrismaPg(pool);
 const prisma = new PrismaClient({ adapter });
-const port = process.env.PORT || 3033;
+const port = Number(process.env.PORT) || 3033;
 const JWT_SECRET = process.env.JWT_SECRET || 'talkin-crm-secret-key-123';
 
 app.use(cors());
@@ -683,7 +683,7 @@ app.get('/api/messenger/conversations/:id/messages', authenticateToken, async (r
   ];
   try {
     const messages = await prisma.message.findMany({
-      where: { conversationId: id },
+      where: { conversationId: String(id) },
       include: { sender: true },
       orderBy: { createdAt: 'asc' }
     });
@@ -701,8 +701,8 @@ app.post('/api/messenger/conversations/:id/messages', authenticateToken, async (
     const message = await prisma.message.create({
       data: {
         content,
-        senderId: user.id,
-        conversationId: id
+        senderId: String(user.id),
+        conversationId: String(id)
       },
       include: {
         sender: { select: { id: true, name: true, role: true } }
@@ -763,8 +763,8 @@ async function main() {
       res.sendFile(path.join(__dirname, '../dist/index.html'));
     });
 
-    httpServer.listen(port, () => {
-      console.log(`🚀 Institutional OS running on http://localhost:${port}`);
+    httpServer.listen(port, '0.0.0.0', () => {
+      console.log(`🚀 Institutional OS running on http://0.0.0.0:${port}`);
     });
   } catch (error) {
     console.error('❌ Institutional Engine failure:', error);
