@@ -12,8 +12,8 @@ const ProgressBar = ({ value, theme }: { value: number; theme: 'primary' | 'seco
     dark: "bg-[#303030]"
   };
   return (
-    <div className="h-1.5 bg-[#e4e2de] rounded-full mt-3 overflow-hidden">
-      <div className={cn("h-full rounded-full transition-all duration-1000", themes[theme])} style={{ width: `${value}%` }} />
+    <div className="h-1.5 bg-[#e4e2de] rounded-none mt-3 overflow-hidden">
+      <div className={cn("h-full rounded-none transition-all duration-1000", themes[theme])} style={{ width: `${value}%` }} />
     </div>
   );
 };
@@ -29,8 +29,8 @@ export const SupervisorDashboard = () => {
   );
 
   if (error) return (
-    <div className="p-10 bg-surface-low text-primary rounded-[40px] flex items-center gap-6 border border-primary/10 animate-fade-up">
-      <div className="w-16 h-16 bg-white rounded-[24px] shadow-sm flex items-center justify-center text-primary">
+    <div className="p-10 bg-surface-low text-primary rounded-none flex items-center gap-6 border border-primary/10 animate-fade-up">
+      <div className="w-16 h-16 bg-white rounded-none shadow-sm flex items-center justify-center text-primary">
         <AlertCircle size={32} />
       </div>
       <div>
@@ -112,10 +112,10 @@ export const SupervisorDashboard = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {stalledClasses.length > 0 ? stalledClasses.map((a: any) => (
-              <div key={a.id} className="bg-surface-low rounded-[40px] p-10 flex flex-col justify-between hover:bg-white border border-transparent hover:border-[#454557]/5 transition-all duration-700 hover:shadow-2xl group relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-red-500/5 blur-[40px] rounded-full pointer-events-none" />
+              <div key={a.id} className="bg-surface-low rounded-none p-10 flex flex-col justify-between hover:bg-white border border-transparent hover:border-[#454557]/5 transition-all duration-700 hover:shadow-2xl group relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-red-500/5 blur-[40px] rounded-none pointer-events-none" />
                 <div className="flex items-center justify-between mb-8 relative z-10">
-                  <div className="w-16 h-16 bg-white text-error rounded-[22px] shadow-sm flex items-center justify-center group-hover:bg-error group-hover:text-white transition-colors">
+                  <div className="w-16 h-16 bg-white text-error rounded-none shadow-sm flex items-center justify-center group-hover:bg-error group-hover:text-white transition-colors">
                     <AlertCircle size={32} />
                   </div>
                   <Badge variant="error" size="sm">CRITICAL NODE</Badge>
@@ -126,14 +126,14 @@ export const SupervisorDashboard = () => {
                 </div>
                 <div className="flex items-center justify-between mt-12 pt-8 border-t border-[#454557]/5 relative z-10">
                   <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#454557]/20">{a.studentCount} Nodes At Risk</span>
-                  <Button variant="ghost" size="sm" className="w-12 h-12 p-0 rounded-full bg-white shadow-sm border border-[#454557]/5" icon={<ArrowRight size={18} />} />
+                  <Button variant="ghost" size="sm" className="w-12 h-12 p-0 rounded-none bg-white shadow-sm border border-[#454557]/5" icon={<ArrowRight size={18} />} />
                 </div>
               </div>
             )) : (
-              <div className="md:col-span-2 p-24 flex flex-col items-center justify-center text-center bg-surface-low rounded-[48px] relative overflow-hidden border border-transparent hover:border-[#454557]/5 transition-all duration-700">
+              <div className="md:col-span-2 p-24 flex flex-col items-center justify-center text-center bg-surface-low rounded-none relative overflow-hidden border border-transparent hover:border-[#454557]/5 transition-all duration-700">
                 <div className="absolute inset-0 bg-primary/5 opacity-50" />
-                <div className="absolute top-0 right-0 w-96 h-96 bg-[var(--secondary)]/10 blur-[100px] rounded-full pointer-events-none" />
-                <div className="w-24 h-24 bg-white rounded-[32px] flex items-center justify-center mb-10 shadow-xl relative z-10 animate-pulse">
+                <div className="absolute top-0 right-0 w-96 h-96 bg-[var(--secondary)]/10 blur-[100px] rounded-none pointer-events-none" />
+                <div className="w-24 h-24 bg-white rounded-none flex items-center justify-center mb-10 shadow-xl relative z-10 animate-pulse">
                   <CheckCircle2 className="text-[#5a6400]" size={48} />
                 </div>
                 <h3 className="serif text-4xl font-bold text-[#303030] relative z-10">Nodes Synchronized</h3>
@@ -143,8 +143,8 @@ export const SupervisorDashboard = () => {
           </div>
 
           {/* Institutional Performance Index */}
-          <div className="bg-[#303030] text-white rounded-[48px] p-12 relative overflow-hidden shadow-2xl electric-glow">
-            <div className="absolute top-0 right-0 w-[50rem] h-[50rem] bg-primary/30 blur-[120px] rounded-full translate-x-1/2 -translate-y-1/2 pointer-events-none" />
+          <div className="bg-[#303030] text-white rounded-none p-12 relative overflow-hidden shadow-2xl electric-glow">
+            <div className="absolute top-0 right-0 w-[50rem] h-[50rem] bg-primary/30 blur-[120px] rounded-none translate-x-1/2 -translate-y-1/2 pointer-events-none" />
             
             <header className="flex items-center justify-between mb-16 relative z-10">
               <h3 className="serif text-3xl font-bold text-white flex items-center gap-5 italic focus:outline-none">
@@ -189,13 +189,13 @@ export const SupervisorDashboard = () => {
             <Badge variant="primary" className="animate-pulse">STREAMING</Badge>
           </header>
           
-          <div className="bg-surface-low rounded-[48px] p-8 space-y-4 flex flex-col min-h-[700px] shadow-sm relative overflow-hidden">
+          <div className="bg-surface-low rounded-none p-8 space-y-4 flex flex-col min-h-[700px] shadow-sm relative overflow-hidden">
             <div className="absolute inset-0 bg-white/30 backdrop-blur-3xl pointer-events-none" />
             <div className="flex-1 space-y-4 relative z-10">
               {insights.map((ins: any, i: number) => (
-                <div key={ins.name + i} className="p-8 rounded-[32px] bg-white group hover:shadow-2xl transition-all duration-700 border border-transparent hover:border-primary/5 hover:-translate-y-1">
+                <div key={ins.name + i} className="p-8 rounded-none bg-white group hover:shadow-2xl transition-all duration-700 border border-transparent hover:border-primary/5 hover:-translate-y-1">
                   <div className="flex gap-5">
-                    <div className="w-16 h-16 rounded-[22px] bg-[#303030] text-[var(--secondary)] font-black flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform shadow-xl">
+                    <div className="w-16 h-16 rounded-none bg-[#303030] text-[var(--secondary)] font-black flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform shadow-xl">
                       {ins.name.charAt(0)}
                     </div>
                     <div className="flex-1 min-w-0">
@@ -206,7 +206,7 @@ export const SupervisorDashboard = () => {
                       <p className="text-sm text-[#454557] font-medium leading-relaxed mb-6 italic opacity-80 decoration-primary/20">"{ins.msg}"</p>
                       <div className="flex items-center gap-3">
                         <Badge variant={ins.variant} size="xs">{ins.tag}</Badge>
-                        <span className="w-1.5 h-1.5 rounded-full bg-primary/20" />
+                        <span className="w-1.5 h-1.5 rounded-none bg-primary/20" />
                         <span className="text-[8px] font-black text-[#454557]/30 uppercase tracking-[0.1em]">Lector ID: {ins.name.split(' ')[0]}</span>
                       </div>
                     </div>
@@ -216,7 +216,7 @@ export const SupervisorDashboard = () => {
             </div>
             
             <div className="pt-8 pt-4 relative z-10">
-              <Button variant="outline" icon={<MessageSquare size={18} />} className="w-full h-18 rounded-[24px] bg-white border-none shadow-sm text-[#303030] hover:bg-[#303030] hover:text-white transition-all">
+              <Button variant="outline" icon={<MessageSquare size={18} />} className="w-full h-18 rounded-none bg-white border-none shadow-sm text-[#303030] hover:bg-[#303030] hover:text-white transition-all">
                 Open Full Activity Ledger
               </Button>
             </div>

@@ -23,9 +23,9 @@ export const Badge = ({
   };
 
   const sizes = {
-    xs: "px-2 py-0.5 text-[8px] rounded-md",
-    sm: "px-3 py-1.5 text-[10px] rounded-md",
-    md: "px-4 py-2 text-[10px] rounded-lg",
+    xs: "px-2 py-0.5 text-[8px] rounded-none",
+    sm: "px-3 py-1.5 text-[10px] rounded-none",
+    md: "px-4 py-2 text-[10px] rounded-none",
   };
 
   return (

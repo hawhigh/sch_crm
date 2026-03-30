@@ -34,7 +34,7 @@ export const InstitutionalCalendar = () => {
       <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-12 border-b border-[#454557]/5 pb-10">
         <div className="max-w-3xl">
           <div className="flex items-center gap-4 mb-8">
-            <div className="w-14 h-14 rounded-[20px] bg-[#303030] flex items-center justify-center text-[var(--secondary)] shadow-2xl rotate-3">
+            <div className="w-14 h-14 rounded-none bg-[#303030] flex items-center justify-center text-[var(--secondary)] shadow-2xl rotate-3">
               <CalendarIcon size={28} />
             </div>
             <span className="text-primary text-[10px] font-black uppercase tracking-[0.4em]">Temporal Orchestration</span>
@@ -47,23 +47,23 @@ export const InstitutionalCalendar = () => {
           </p>
         </div>
         
-        <div className="flex items-center gap-5 bg-white p-2.5 rounded-[32px] shadow-2xl border border-white/40 backdrop-blur-md">
+        <div className="flex items-center gap-5 bg-white p-2.5 rounded-none shadow-2xl border border-white/40 backdrop-blur-md">
           <button 
             onClick={() => setView('grid')}
-            className={cn("p-5 rounded-[22px] transition-all", view === 'grid' ? "bg-[#303030] text-white shadow-2xl" : "text-[#454557]/30 hover:text-primary hover:bg-surface-low")}
+            className={cn("p-5 rounded-none transition-all", view === 'grid' ? "bg-[#303030] text-white shadow-2xl" : "text-[#454557]/30 hover:text-primary hover:bg-surface-low")}
           >
             <LayoutGrid size={28} />
           </button>
           <button 
             onClick={() => setView('list')}
-            className={cn("p-5 rounded-[22px] transition-all", view === 'list' ? "bg-[#303030] text-white shadow-2xl" : "text-[#454557]/30 hover:text-primary hover:bg-surface-low")}
+            className={cn("p-5 rounded-none transition-all", view === 'list' ? "bg-[#303030] text-white shadow-2xl" : "text-[#454557]/30 hover:text-primary hover:bg-surface-low")}
           >
             <List size={28} />
           </button>
           <div className="w-px h-10 bg-[#303030]/5 mx-3" />
           <button 
             onClick={() => openModal('SCHEDULE_TASK')}
-            className="px-10 py-5 bg-primary text-white rounded-[22px] font-black text-xs uppercase tracking-[0.3em] flex items-center gap-4 hover:opacity-90 transition-all shadow-xl hover:-translate-y-1 active:scale-95"
+            className="px-10 py-5 bg-primary text-white rounded-none font-black text-xs uppercase tracking-[0.3em] flex items-center gap-4 hover:opacity-90 transition-all shadow-xl hover:-translate-y-1 active:scale-95"
           >
             <Plus size={22} />
             <span>Schedule TASK</span>
@@ -78,19 +78,19 @@ export const InstitutionalCalendar = () => {
               <div className="flex items-center gap-8">
                  <h2 className="serif text-4xl font-bold text-[#303030]">October <span className="italic font-normal text-[var(--secondary)] text-[#5a6400]">2026</span></h2>
                  <div className="flex items-center gap-3">
-                    <button className="w-12 h-12 flex items-center justify-center rounded-[16px] bg-white hover:bg-primary hover:text-white transition-all shadow-sm text-[#303030]">
+                    <button className="w-12 h-12 flex items-center justify-center rounded-none bg-white hover:bg-primary hover:text-white transition-all shadow-sm text-[#303030]">
                        <ChevronLeft size={24} />
                     </button>
-                    <button className="w-12 h-12 flex items-center justify-center rounded-[16px] bg-white hover:bg-primary hover:text-white transition-all shadow-sm text-[#303030]">
+                    <button className="w-12 h-12 flex items-center justify-center rounded-none bg-white hover:bg-primary hover:text-white transition-all shadow-sm text-[#303030]">
                        <ChevronRight size={24} />
                     </button>
                  </div>
               </div>
               
-              <div className="flex gap-3 bg-white p-1.5 rounded-[16px] shadow-sm">
+              <div className="flex gap-3 bg-white p-1.5 rounded-none shadow-sm">
                  {['Day', 'Week', 'Month'].map(t => (
                    <button key={t} className={cn(
-                     "px-8 py-3 rounded-[12px] text-[10px] font-bold uppercase tracking-[0.2em] transition-all",
+                     "px-8 py-3 rounded-none text-[10px] font-bold uppercase tracking-[0.2em] transition-all",
                      t === 'Week' ? "bg-primary text-white shadow-md" : "bg-transparent text-[#454557]/60 hover:text-[#303030] hover:bg-surface-low"
                    )}>
                      {t}
@@ -99,9 +99,9 @@ export const InstitutionalCalendar = () => {
               </div>
            </div>
 
-           <div className="bg-surface-low rounded-[40px] p-12 relative overflow-hidden shadow-inner">
+           <div className="bg-surface-low rounded-none p-12 relative overflow-hidden shadow-inner">
               {/* Background Glow */}
-              <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/10 blur-[80px] rounded-full translate-x-1/2 -translate-y-1/2 pointer-events-none" />
+              <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/10 blur-[80px] rounded-none translate-x-1/2 -translate-y-1/2 pointer-events-none" />
               
               <div className="relative z-10">
                  {/* Week Headers */}
@@ -130,7 +130,7 @@ export const InstitutionalCalendar = () => {
                                   .filter((e: any) => e.hour === hour && (e.day === d || (e.day === 0 && d === 7)))
                                   .map((event: any) => (
                                     <div key={event.id} className={cn(
-                                       "absolute inset-0 z-20 p-4 rounded-[16px] text-white shadow-lg hover:scale-105 transition-all cursor-pointer group-hover/cell:z-30 flex flex-col justify-between border border-[#454557]/20",
+                                       "absolute inset-0 z-20 p-4 rounded-none text-white shadow-lg hover:scale-105 transition-all cursor-pointer group-hover/cell:z-30 flex flex-col justify-between border border-[#454557]/20",
                                        event.color === 'primary' ? "bg-[#303030]" : "bg-primary"
                                     )}>
                                        <div>
@@ -150,7 +150,7 @@ export const InstitutionalCalendar = () => {
                                     </div>
                                   ))}
                                 {/* Empty Slot Hover State */}
-                                <div className="absolute inset-0 m-1 rounded-[16px] border-2 border-dashed border-transparent hover:border-primary/20 hover:bg-primary/5 transition-all opacity-0 group-hover:opacity-100 cursor-pointer pointer-events-none group-hover/cell:pointer-events-auto" />
+                                <div className="absolute inset-0 m-1 rounded-none border-2 border-dashed border-transparent hover:border-primary/20 hover:bg-primary/5 transition-all opacity-0 group-hover:opacity-100 cursor-pointer pointer-events-none group-hover/cell:pointer-events-auto" />
                              </div>
                          ))}
                       </div>
@@ -171,23 +171,23 @@ export const InstitutionalCalendar = () => {
                  </div>
                )}
                {error && (
-                 <div className="flex items-center gap-4 p-6 bg-error-container/20 text-error rounded-[24px]">
+                 <div className="flex items-center gap-4 p-6 bg-error-container/20 text-error rounded-none">
                    <AlertCircle size={24} />
                    <p className="text-sm font-bold">Failed to sync institutional schedule.</p>
                  </div>
                )}
                {!isLoading && calendarEvents.map((event: any) => (
-                 <div key={event.id} className="bg-white p-8 rounded-[32px] shadow-sm hover:shadow-lg transition-all cursor-pointer group border border-[#454557]/5 relative overflow-hidden">
-                      <div className="absolute top-0 right-0 w-24 h-24 bg-primary/5 blur-[20px] rounded-full translate-x-1/2 -translate-y-1/2" />
+                 <div key={event.id} className="bg-white p-8 rounded-none shadow-sm hover:shadow-lg transition-all cursor-pointer group border border-[#454557]/5 relative overflow-hidden">
+                      <div className="absolute top-0 right-0 w-24 h-24 bg-primary/5 blur-[20px] rounded-none translate-x-1/2 -translate-y-1/2" />
                       
                       <div className="flex items-start justify-between mb-6 relative z-10">
                          <div className={cn(
-                           "px-4 py-2 rounded-md text-[10px] font-bold uppercase tracking-[0.2em]",
+                           "px-4 py-2 rounded-none text-[10px] font-bold uppercase tracking-[0.2em]",
                            event.color === 'primary' ? "bg-primary text-white" : "bg-[var(--secondary)]/20 text-[#5a6400]"
                          )}>
                             {event.type}
                          </div>
-                         <div className="w-10 h-10 rounded-full bg-surface-low flex items-center justify-center text-[#454557]/40 group-hover:bg-primary group-hover:text-white transition-colors">
+                         <div className="w-10 h-10 rounded-none bg-surface-low flex items-center justify-center text-[#454557]/40 group-hover:bg-primary group-hover:text-white transition-colors">
                            <Sparkles size={16} />
                          </div>
                       </div>
@@ -206,8 +206,8 @@ export const InstitutionalCalendar = () => {
                  ))}
                  
                  {!isLoading && calendarEvents.length === 0 && (
-                   <div className="bg-white p-10 rounded-[32px] text-center shadow-sm">
-                     <div className="w-16 h-16 bg-surface-low rounded-full mx-auto flex items-center justify-center mb-4 text-[#454557]/30">
+                   <div className="bg-white p-10 rounded-none text-center shadow-sm">
+                     <div className="w-16 h-16 bg-surface-low rounded-none mx-auto flex items-center justify-center mb-4 text-[#454557]/30">
                        <CalendarIcon size={24} />
                      </div>
                      <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#454557]/60">Schedule Clear</p>
@@ -216,11 +216,11 @@ export const InstitutionalCalendar = () => {
               </div>
            </div>
 
-           <div className="bg-[#0300a9] text-white rounded-[40px] p-10 space-y-8 relative overflow-hidden group hover:shadow-2xl transition-shadow">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 blur-[60px] rounded-full translate-x-1/3 -translate-y-1/3 pointer-events-none" />
+           <div className="bg-[#0300a9] text-white rounded-none p-10 space-y-8 relative overflow-hidden group hover:shadow-2xl transition-shadow">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 blur-[60px] rounded-none translate-x-1/3 -translate-y-1/3 pointer-events-none" />
               
               <div className="flex items-center gap-6 relative z-10">
-                 <div className="w-16 h-16 rounded-[20px] bg-white flex items-center justify-center text-[#0300a9] shadow-lg">
+                 <div className="w-16 h-16 rounded-none bg-white flex items-center justify-center text-[#0300a9] shadow-lg">
                     <Filter size={28} />
                  </div>
                  <div>
@@ -230,11 +230,11 @@ export const InstitutionalCalendar = () => {
               </div>
 
               <div className="space-y-4 relative z-10">
-                 <button className="flex items-center justify-between w-full px-6 py-5 rounded-[20px] bg-white/10 hover:bg-white/20 transition-all text-[#e4e2de] text-[10px] font-bold uppercase tracking-[0.2em] backdrop-blur-md">
+                 <button className="flex items-center justify-between w-full px-6 py-5 rounded-none bg-white/10 hover:bg-white/20 transition-all text-[#e4e2de] text-[10px] font-bold uppercase tracking-[0.2em] backdrop-blur-md">
                     <span>Target Schools</span>
                     <ChevronRight size={16} />
                  </button>
-                 <button className="flex items-center justify-between w-full px-6 py-5 rounded-[20px] bg-white/10 hover:bg-white/20 transition-all text-[#e4e2de] text-[10px] font-bold uppercase tracking-[0.2em] backdrop-blur-md">
+                 <button className="flex items-center justify-between w-full px-6 py-5 rounded-none bg-white/10 hover:bg-white/20 transition-all text-[#e4e2de] text-[10px] font-bold uppercase tracking-[0.2em] backdrop-blur-md">
                     <span>Lector Groups</span>
                     <ChevronRight size={16} />
                  </button>

@@ -25,11 +25,11 @@ export const Login = ({ onLogin }: { onLogin?: (role: string) => void }) => {
       {/* 60% Left Section - Editorial Showcase */}
       <div className="hidden lg:flex flex-col flex-1 p-24 relative overflow-hidden bg-[#fbf9f5] justify-between border-r border-[#454557]/5">
         {/* Abstract Geometry */}
-        <div className="absolute top-0 left-0 w-[800px] h-[800px] bg-primary/5 blur-[120px] rounded-full -translate-x-1/2 -translate-y-1/2 pointer-events-none animate-pulse" />
-        <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-[var(--secondary)]/5 blur-[100px] rounded-full translate-x-1/3 translate-y-1/3 pointer-events-none" />
+        <div className="absolute top-0 left-0 w-[800px] h-[800px] bg-primary/5 blur-[120px] rounded-none -translate-x-1/2 -translate-y-1/2 pointer-events-none animate-pulse" />
+        <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-[var(--secondary)]/5 blur-[100px] rounded-none translate-x-1/3 translate-y-1/3 pointer-events-none" />
         
         <div className="relative z-10 animate-fade-up">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/5 rounded-full mb-12 border border-primary/10">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/5 rounded-none mb-12 border border-primary/10">
             <ShieldCheck size={14} className="text-primary" />
             <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary">Institutional Shield Active</span>
           </div>
@@ -56,7 +56,7 @@ export const Login = ({ onLogin }: { onLogin?: (role: string) => void }) => {
         <div className="w-full max-w-[420px] animate-fade-up stagger-1">
           
           <div className="flex items-center gap-4 mb-16">
-            <div className="w-14 h-14 rounded-2xl bg-[#303030] flex items-center justify-center shadow-2xl electric-glow transition-transform hover:scale-110">
+            <div className="w-14 h-14 rounded-none bg-[#303030] flex items-center justify-center shadow-2xl electric-glow transition-transform hover:scale-110">
               <Sparkles className="text-[var(--secondary)]" size={24} />
             </div>
             <div>
@@ -74,7 +74,7 @@ export const Login = ({ onLogin }: { onLogin?: (role: string) => void }) => {
                   placeholder="Institutional Identity"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full bg-surface-low border border-transparent focus:border-primary/10 rounded-[24px] py-5 pl-14 pr-8 text-sm font-bold text-[#303030] focus:outline-none transition-all placeholder:text-[#454557]/30 placeholder:uppercase placeholder:tracking-[0.2em] shadow-sm focus:bg-white"
+                  className="w-full bg-surface-low border border-transparent focus:border-primary/10 rounded-none py-5 pl-14 pr-8 text-sm font-bold text-[#303030] focus:outline-none transition-all placeholder:text-[#454557]/30 placeholder:uppercase placeholder:tracking-[0.2em] shadow-sm focus:bg-white"
                   required
                 />
               </div>
@@ -85,14 +85,14 @@ export const Login = ({ onLogin }: { onLogin?: (role: string) => void }) => {
                   placeholder="Security Key"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full bg-surface-low border border-transparent focus:border-primary/10 rounded-[24px] py-5 pl-14 pr-8 text-sm font-bold text-[#303030] focus:outline-none transition-all placeholder:text-[#454557]/30 placeholder:uppercase placeholder:tracking-[0.2em] shadow-sm focus:bg-white"
+                  className="w-full bg-surface-low border border-transparent focus:border-primary/10 rounded-none py-5 pl-14 pr-8 text-sm font-bold text-[#303030] focus:outline-none transition-all placeholder:text-[#454557]/30 placeholder:uppercase placeholder:tracking-[0.2em] shadow-sm focus:bg-white"
                   required
                 />
               </div>
             </div>
 
             {error && (
-              <div className="flex items-center gap-3 p-5 bg-red-50 text-red-600 rounded-[24px] text-xs animate-in slide-in-from-top-2 duration-300 border border-red-100 font-bold">
+              <div className="flex items-center gap-3 p-5 bg-red-50 text-red-600 rounded-none text-xs animate-in slide-in-from-top-2 duration-300 border border-red-100 font-bold">
                 <AlertCircle size={18} className="flex-shrink-0" />
                 <p>{error}</p>
               </div>
@@ -101,7 +101,7 @@ export const Login = ({ onLogin }: { onLogin?: (role: string) => void }) => {
             <button 
               type="submit" 
               disabled={isLoading}
-              className="w-full h-18 bg-[#303030] text-white rounded-[24px] font-black uppercase tracking-[0.3em] text-[10px] flex items-center justify-center gap-4 transition-all hover:bg-black hover:scale-[1.02] shadow-xl electric-glow disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full h-18 bg-[#303030] text-white rounded-none font-black uppercase tracking-[0.3em] text-[10px] flex items-center justify-center gap-4 transition-all hover:bg-black hover:scale-[1.02] shadow-xl electric-glow disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isLoading ? (
                 <Loader2 className="animate-spin text-[var(--secondary)]" size={24} />

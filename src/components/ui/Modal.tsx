@@ -26,15 +26,15 @@ export const GlobalModal = () => {
           initial={{ opacity: 0, scale: 0.9, y: 40 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.9, y: 40 }}
-          className="relative w-full max-w-2xl bg-white rounded-[56px] shadow-2xl overflow-hidden border border-[#454557]/10"
+          className="relative w-full max-w-2xl bg-white rounded-none shadow-2xl overflow-hidden border border-[#454557]/10"
         >
            {/* Background Glow */}
-           <div className="absolute top-0 right-0 w-80 h-80 bg-primary/10 blur-[100px] rounded-full translate-x-1/2 -translate-y-1/2 pointer-events-none" />
+           <div className="absolute top-0 right-0 w-80 h-80 bg-primary/10 blur-[100px] rounded-none translate-x-1/2 -translate-y-1/2 pointer-events-none" />
            
            {/* Header */}
            <header className="px-12 py-10 border-b border-[#454557]/5 flex justify-between items-center bg-surface-low/30 relative z-10">
               <div className="flex items-center gap-6">
-                 <div className="w-16 h-16 rounded-[24px] bg-[#303030] flex items-center justify-center text-[var(--secondary)] shadow-xl rotate-3">
+                 <div className="w-16 h-16 rounded-none bg-[#303030] flex items-center justify-center text-[var(--secondary)] shadow-xl rotate-3">
                     {type === 'SCHEDULE_TASK' && <Calendar size={32} />}
                     {type === 'CREATE_CURRICULUM' && <BookOpen size={32} />}
                     {type === 'VIEW_INSIGHT' && <Sparkles size={32} />}
@@ -50,7 +50,7 @@ export const GlobalModal = () => {
               </div>
               <button 
                 onClick={closeModal}
-                className="w-12 h-12 rounded-full hover:bg-[#303030] hover:text-white transition-all text-[#454557]/40 flex items-center justify-center shadow-sm"
+                className="w-12 h-12 rounded-none hover:bg-[#303030] hover:text-white transition-all text-[#454557]/40 flex items-center justify-center shadow-sm"
               >
                  <X size={24} />
               </button>
@@ -62,20 +62,20 @@ export const GlobalModal = () => {
                 <div className="space-y-8 animate-fade-up">
                    <div className="space-y-4">
                       <label className="text-[10px] font-black uppercase tracking-[0.3em] text-[#454557]/60 ml-4">Task Objective</label>
-                      <input type="text" placeholder="e.g. Oral Mastery Workshop Grade 9..." className="w-full bg-surface-low border-none rounded-[28px] py-6 px-10 text-lg font-bold shadow-inner placeholder:text-[#454557]/20 focus:ring-4 focus:ring-primary/5 transition-all text-[#303030]" />
+                      <input type="text" placeholder="e.g. Oral Mastery Workshop Grade 9..." className="w-full bg-surface-low border-none rounded-none py-6 px-10 text-lg font-bold shadow-inner placeholder:text-[#454557]/20 focus:ring-4 focus:ring-primary/5 transition-all text-[#303030]" />
                    </div>
                    <div className="grid grid-cols-2 gap-8">
                        <div className="space-y-4">
                           <label className="text-[10px] font-black uppercase tracking-[0.3em] text-[#454557]/60 ml-4">Date Hub</label>
-                          <input type="date" className="w-full bg-surface-low border-none rounded-[24px] py-5 px-8 font-bold text-[#303030] shadow-sm" />
+                          <input type="date" className="w-full bg-surface-low border-none rounded-none py-5 px-8 font-bold text-[#303030] shadow-sm" />
                        </div>
                        <div className="space-y-4">
                           <label className="text-[10px] font-black uppercase tracking-[0.3em] text-[#454557]/60 ml-4">Temporal Node (Time)</label>
-                          <input type="time" className="w-full bg-surface-low border-none rounded-[24px] py-5 px-8 font-bold text-[#303030] shadow-sm" />
+                          <input type="time" className="w-full bg-surface-low border-none rounded-none py-5 px-8 font-bold text-[#303030] shadow-sm" />
                        </div>
                    </div>
                    <div className="pt-8 border-t border-[#454557]/5">
-                      <button className="w-full py-6 bg-[#303030] text-[var(--secondary)] rounded-[28px] font-black text-xs uppercase tracking-[0.4em] shadow-2xl hover:bg-primary hover:text-white transition-all active:scale-95 group">
+                      <button className="w-full py-6 bg-[#303030] text-[var(--secondary)] rounded-none font-black text-xs uppercase tracking-[0.4em] shadow-2xl hover:bg-primary hover:text-white transition-all active:scale-95 group">
                         Confirm Institutional Schedule
                       </button>
                    </div>
@@ -90,10 +90,10 @@ export const GlobalModal = () => {
                    </div>
                    <div className="space-y-4">
                       <label className="text-[10px] font-black uppercase tracking-[0.3em] text-[#454557]/60 ml-4">The core Document (Markdown)</label>
-                      <textarea rows={6} placeholder="Curate the grammar matrix, phonics targets, and oral flow..." className="w-full bg-surface-low border-none rounded-[36px] p-10 text-lg font-medium shadow-inner placeholder:text-[#454557]/20 focus:ring-4 focus:ring-primary/5 transition-all text-[#303030]" />
+                      <textarea rows={6} placeholder="Curate the grammar matrix, phonics targets, and oral flow..." className="w-full bg-surface-low border-none rounded-none p-10 text-lg font-medium shadow-inner placeholder:text-[#454557]/20 focus:ring-4 focus:ring-primary/5 transition-all text-[#303030]" />
                    </div>
                    <div className="pt-8 border-t border-[#454557]/5">
-                      <button className="w-full py-6 bg-primary text-white rounded-[28px] font-black text-xs uppercase tracking-[0.4em] shadow-2xl hover:opacity-90 transition-all active:scale-95">
+                      <button className="w-full py-6 bg-primary text-white rounded-none font-black text-xs uppercase tracking-[0.4em] shadow-2xl hover:opacity-90 transition-all active:scale-95">
                          Archive & Publish for Parents
                       </button>
                    </div>
@@ -102,11 +102,11 @@ export const GlobalModal = () => {
 
               {type === 'VIEW_INSIGHT' && (
                 <div className="space-y-8 animate-fade-up text-center">
-                   <div className="w-24 h-24 rounded-full bg-[var(--secondary)]/20 mx-auto flex items-center justify-center text-[#5a6400] mb-8 animate-pulse text-4xl font-bold">88%</div>
+                   <div className="w-24 h-24 rounded-none bg-[var(--secondary)]/20 mx-auto flex items-center justify-center text-[#5a6400] mb-8 animate-pulse text-4xl font-bold">88%</div>
                    <h4 className="text-2xl font-bold text-[#303030] leading-tight">Class Completion Mastery</h4>
                    <p className="text-[#454557]/60 leading-relaxed max-w-sm mx-auto font-medium">This class is performing high above the institutional average for Grade 4 Grammar Mastery.</p>
                    <div className="pt-10 border-t border-[#454557]/5">
-                      <button onClick={closeModal} className="w-full py-6 bg-surface-low text-[#303030] rounded-[28px] font-black text-xs uppercase tracking-[0.4em] hover:bg-primary hover:text-white transition-all shadow-sm">
+                      <button onClick={closeModal} className="w-full py-6 bg-surface-low text-[#303030] rounded-none font-black text-xs uppercase tracking-[0.4em] hover:bg-primary hover:text-white transition-all shadow-sm">
                          Archive Pulses
                       </button>
                    </div>
@@ -150,12 +150,12 @@ export const Modal = ({ isOpen, onClose, title, footer, children }: ModalProps) 
           initial={{ opacity: 0, scale: 0.9, y: 40 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.9, y: 40 }}
-          className="relative w-full max-w-2xl bg-white rounded-[56px] shadow-2xl overflow-hidden border border-[#454557]/10"
+          className="relative w-full max-w-2xl bg-white rounded-none shadow-2xl overflow-hidden border border-[#454557]/10"
         >
-          <div className="absolute top-0 right-0 w-80 h-80 bg-primary/10 blur-[100px] rounded-full translate-x-1/2 -translate-y-1/2 pointer-events-none" />
+          <div className="absolute top-0 right-0 w-80 h-80 bg-primary/10 blur-[100px] rounded-none translate-x-1/2 -translate-y-1/2 pointer-events-none" />
           <header className="px-12 py-10 border-b border-[#454557]/5 flex justify-between items-center bg-surface-low/30 relative z-10">
             <h3 className="serif text-3xl font-bold text-[#303030] italic">{title}</h3>
-            <button onClick={onClose} className="w-12 h-12 rounded-full hover:bg-[#303030] hover:text-white transition-all text-[#454557]/40 flex items-center justify-center">
+            <button onClick={onClose} className="w-12 h-12 rounded-none hover:bg-[#303030] hover:text-white transition-all text-[#454557]/40 flex items-center justify-center">
               <X size={24} />
             </button>
           </header>

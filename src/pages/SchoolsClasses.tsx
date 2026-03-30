@@ -38,8 +38,8 @@ export const SchoolsClasses = () => {
   );
 
   if (error) return (
-    <div className="p-12 bg-white rounded-[40px] shadow-sm border border-[#454557]/5 flex flex-col items-center justify-center text-center max-w-2xl mx-auto mt-20 space-y-6">
-      <div className="w-20 h-20 rounded-[32px] bg-red-50 flex items-center justify-center text-[var(--error)] shadow-sm">
+    <div className="p-12 bg-white rounded-none shadow-sm border border-[#454557]/5 flex flex-col items-center justify-center text-center max-w-2xl mx-auto mt-20 space-y-6">
+      <div className="w-20 h-20 rounded-none bg-red-50 flex items-center justify-center text-[var(--error)] shadow-sm">
         <AlertCircle size={40} />
       </div>
       <div>
@@ -56,7 +56,7 @@ export const SchoolsClasses = () => {
       <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 border-b border-[#454557]/5 pb-10">
         <div className="max-w-2xl">
           <div className="flex items-center gap-4 mb-6">
-            <div className="w-12 h-12 rounded-[16px] bg-[#303030] flex items-center justify-center text-[var(--secondary)] shadow-lg shadow-[#303030]/10">
+            <div className="w-12 h-12 rounded-none bg-[#303030] flex items-center justify-center text-[var(--secondary)] shadow-lg shadow-[#303030]/10">
               <GraduationCap size={24} />
             </div>
             <span className="text-[#454557]/60 text-[10px] font-bold uppercase tracking-[0.3em]">Institutional Management Matrix</span>
@@ -69,12 +69,12 @@ export const SchoolsClasses = () => {
           </p>
         </div>
         
-        <div className="flex items-center gap-4 bg-white p-2.5 rounded-[24px] shadow-sm border border-[#454557]/10 backdrop-blur-sm">
-          <Button variant="outline" size="sm" className="w-14 h-14 rounded-[16px] p-0">
+        <div className="flex items-center gap-4 bg-white p-2.5 rounded-none shadow-sm border border-[#454557]/10 backdrop-blur-sm">
+          <Button variant="outline" size="sm" className="w-14 h-14 rounded-none p-0">
             <Filter size={20} />
           </Button>
           <div className="w-px h-8 bg-[#454557]/10 mx-1" />
-          <Button className="px-8 py-7 rounded-[18px] text-[10px] tracking-[0.2em]">
+          <Button className="px-8 py-7 rounded-none text-[10px] tracking-[0.2em]">
             <Plus size={18} className="mr-2" />
             ENROLL NEW SCHOOL
           </Button>
@@ -95,7 +95,7 @@ export const SchoolsClasses = () => {
                   key={school.id}
                   onClick={() => setSelectedSchool(school)}
                   className={cn(
-                    "w-full text-left p-10 rounded-[40px] transition-all duration-500 relative overflow-hidden group border",
+                    "w-full text-left p-10 rounded-none transition-all duration-500 relative overflow-hidden group border",
                     selectedSchool?.id === school.id 
                       ? "bg-[#303030] border-[#303030] shadow-2xl text-white transform -translate-y-2 outline-none scale-[1.02]" 
                       : "bg-surface-low border-transparent hover:bg-white hover:border-[#454557]/15 text-[#303030]"
@@ -104,7 +104,7 @@ export const SchoolsClasses = () => {
                   <div className="flex items-start justify-between relative z-10">
                     <div className="flex items-center gap-8">
                        <div className={cn(
-                         "w-16 h-16 rounded-[22px] flex items-center justify-center transition-all duration-500 shadow-sm",
+                         "w-16 h-16 rounded-none flex items-center justify-center transition-all duration-500 shadow-sm",
                          selectedSchool?.id === school.id ? "bg-white text-[#303030] rotate-6" : "bg-white text-[#454557]/40 group-hover:text-primary group-hover:rotate-6"
                        )}>
                           <School size={28} />
@@ -144,13 +144,13 @@ export const SchoolsClasses = () => {
         {/* Right Col: Class & Student Explorer */}
         <div className="lg:col-span-8 space-y-12">
            {selectedSchool && (
-             <div className="bg-surface-low rounded-[56px] p-20 relative overflow-hidden shadow-inner border border-white">
-                <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/10 blur-[120px] rounded-full translate-x-1/2 -translate-y-1/2 pointer-events-none" />
+             <div className="bg-surface-low rounded-none p-20 relative overflow-hidden shadow-inner border border-white">
+                <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/10 blur-[120px] rounded-none translate-x-1/2 -translate-y-1/2 pointer-events-none" />
                 
                 <div className="relative z-10 space-y-16">
                   <div className="flex items-center justify-between border-b border-[#454557]/10 pb-12">
                      <div className="flex items-start gap-10">
-                        <div className="w-20 h-20 rounded-[28px] bg-white flex items-center justify-center shadow-xl group-hover:bg-primary transition-all rotate-3 border border-[#454557]/5">
+                        <div className="w-20 h-20 rounded-none bg-white flex items-center justify-center shadow-xl group-hover:bg-primary transition-all rotate-3 border border-[#454557]/5">
                            <Layout className="text-primary" size={32} />
                         </div>
                         <div>
@@ -161,7 +161,7 @@ export const SchoolsClasses = () => {
                            </div>
                         </div>
                      </div>
-                     <Button variant="ghost" size="sm" className="w-14 h-14 rounded-full bg-white shadow-sm p-0">
+                     <Button variant="ghost" size="sm" className="w-14 h-14 rounded-none bg-white shadow-sm p-0">
                         <MoreVertical size={24} className="text-[#303030]" />
                      </Button>
                   </div>
@@ -196,17 +196,17 @@ export const SchoolsClasses = () => {
                      
                      <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
                         {selectedSchool.classes.map((cls: any) => (
-                          <div key={cls.id} className="flex flex-col p-10 rounded-[40px] bg-white hover:bg-white/60 transition-all border border-[#454557]/10 group shadow-md hover:shadow-2xl cursor-pointer relative overflow-hidden">
-                             <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 blur-[30px] rounded-full translate-x-1/2 -translate-y-1/2" />
+                          <div key={cls.id} className="flex flex-col p-10 rounded-none bg-white hover:bg-white/60 transition-all border border-[#454557]/10 group shadow-md hover:shadow-2xl cursor-pointer relative overflow-hidden">
+                             <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 blur-[30px] rounded-none translate-x-1/2 -translate-y-1/2" />
                              
                              <div className="flex items-center gap-6 mb-8 relative z-10">
-                                <div className="w-16 h-16 rounded-[22px] bg-surface-low flex items-center justify-center text-[#303030] group-hover:bg-primary group-hover:text-white transition-all transform group-hover:rotate-6">
+                                <div className="w-16 h-16 rounded-none bg-surface-low flex items-center justify-center text-[#303030] group-hover:bg-primary group-hover:text-white transition-all transform group-hover:rotate-6">
                                    <Users size={28} />
                                 </div>
                                 <div>
                                    <p className="text-2xl font-bold text-[#303030] group-hover:text-primary transition-colors leading-tight">{cls.name}</p>
                                    <div className="flex items-center gap-2 mt-3">
-                                      <div className="w-1.5 h-1.5 rounded-full bg-[var(--secondary)] animate-pulse" />
+                                      <div className="w-1.5 h-1.5 rounded-none bg-[var(--secondary)] animate-pulse" />
                                       <span className="text-[10px] text-[#454557]/60 font-bold uppercase tracking-[0.2em]">Curator: {cls.lector}</span>
                                    </div>
                                 </div>
@@ -217,7 +217,7 @@ export const SchoolsClasses = () => {
                                    <p className="text-3xl font-bold text-[#303030] group-hover:text-primary transition-colors tracking-tighter">{cls.students}</p>
                                    <p className="text-[9px] text-[#454557]/40 uppercase font-bold tracking-[0.2em] mt-1">Pupils Enrolled</p>
                                 </div>
-                                <Button variant="outline" size="sm" className="w-12 h-12 rounded-[14px] p-0">
+                                <Button variant="outline" size="sm" className="w-12 h-12 rounded-none p-0">
                                    <ChevronRight size={20} />
                                 </Button>
                              </div>
@@ -230,9 +230,9 @@ export const SchoolsClasses = () => {
            )}
 
            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-12 pb-20">
-              <div className="bg-white rounded-[44px] p-12 space-y-10 group cursor-pointer hover:-translate-y-2 hover:shadow-2xl transition-all border border-[#454557]/10 relative overflow-hidden">
-                 <div className="absolute top-0 right-0 w-48 h-48 bg-[var(--secondary)]/10 blur-[40px] rounded-full translate-x-1/2 -translate-y-1/2" />
-                 <div className="w-20 h-20 rounded-[28px] bg-[var(--secondary)] text-[#303030] flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg relative z-10">
+              <div className="bg-white rounded-none p-12 space-y-10 group cursor-pointer hover:-translate-y-2 hover:shadow-2xl transition-all border border-[#454557]/10 relative overflow-hidden">
+                 <div className="absolute top-0 right-0 w-48 h-48 bg-[var(--secondary)]/10 blur-[40px] rounded-none translate-x-1/2 -translate-y-1/2" />
+                 <div className="w-20 h-20 rounded-none bg-[var(--secondary)] text-[#303030] flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg relative z-10">
                     <Users size={32} />
                  </div>
                  <div className="relative z-10">
@@ -241,9 +241,9 @@ export const SchoolsClasses = () => {
                  </div>
               </div>
               
-              <div className="bg-[#303030] rounded-[44px] p-12 space-y-10 group cursor-pointer hover:-translate-y-2 hover:shadow-2xl transition-all border border-white/10 relative overflow-hidden text-white">
-                 <div className="absolute top-0 right-0 w-48 h-48 bg-primary/20 blur-[40px] rounded-full translate-x-1/2 -translate-y-1/2" />
-                 <div className="w-20 h-20 rounded-[28px] bg-primary text-white flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg relative z-10">
+              <div className="bg-[#303030] rounded-none p-12 space-y-10 group cursor-pointer hover:-translate-y-2 hover:shadow-2xl transition-all border border-white/10 relative overflow-hidden text-white">
+                 <div className="absolute top-0 right-0 w-48 h-48 bg-primary/20 blur-[40px] rounded-none translate-x-1/2 -translate-y-1/2" />
+                 <div className="w-20 h-20 rounded-none bg-primary text-white flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg relative z-10">
                     <TrendingUp size={32} />
                  </div>
                  <div className="relative z-10">

@@ -75,7 +75,7 @@ export const Shell = ({ children, role, onLogout }: ShellProps) => {
         {/* Header Identity */}
         <div className="px-10 mb-14">
           <div className="flex items-center gap-5 group cursor-pointer" onClick={() => navigate('/')}>
-            <div className="w-14 h-14 bg-[#0300a9] rounded-[20px] flex items-center justify-center text-white shadow-xl rotate-3 group-hover:rotate-0 transition-all duration-500">
+            <div className="w-14 h-14 bg-[#0300a9] rounded-none flex items-center justify-center text-white shadow-xl rotate-3 group-hover:rotate-0 transition-all duration-500">
               <GraduationCap size={28} />
             </div>
             <div>
@@ -92,7 +92,7 @@ export const Shell = ({ children, role, onLogout }: ShellProps) => {
               key={item.label}
               to={item.path}
               className={({ isActive }) => cn(
-                "flex items-center gap-5 px-6 py-4 rounded-[18px] transition-all duration-500 group relative overflow-hidden",
+                "flex items-center gap-5 px-6 py-4 rounded-none transition-all duration-500 group relative overflow-hidden",
                 isActive 
                   ? "bg-[#303030] text-white shadow-2xl shadow-[#303030]/20 transform -translate-y-0.5" 
                   : "text-[#454557]/60 hover:text-[#303030] hover:bg-white/60 hover:translate-x-1"
@@ -113,7 +113,7 @@ export const Shell = ({ children, role, onLogout }: ShellProps) => {
               </span>
               
               {location.pathname === item.path && (
-                <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-[#d8ef00] mr-4 shadow-[0_0_10px_#d8ef00]" />
+                <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-none bg-[#d8ef00] mr-4 shadow-[0_0_10px_#d8ef00]" />
               )}
             </NavLink>
           ))}
@@ -123,11 +123,11 @@ export const Shell = ({ children, role, onLogout }: ShellProps) => {
         <div className="px-10 mb-8 mt-10">
            <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#454557]/40 mb-6">Analytic Tools</p>
            <div className="flex items-center gap-4 text-[#454557]/40">
-              <button className="w-10 h-10 rounded-xl bg-white border border-[#303030]/5 flex items-center justify-center hover:bg-[#303030] hover:text-[#d8ef00] hover:scale-110 transition-all shadow-sm">
+              <button className="w-10 h-10 rounded-none bg-white border border-[#303030]/5 flex items-center justify-center hover:bg-[#303030] hover:text-[#d8ef00] hover:scale-110 transition-all shadow-sm">
                  <ChefHat size={18} />
               </button>
               <div className="w-px h-6 bg-[#303030]/10" />
-              <button className="w-10 h-10 rounded-xl bg-white border border-[#303030]/5 flex items-center justify-center hover:bg-[#303030] hover:text-[#d8ef00] hover:scale-110 transition-all shadow-sm">
+              <button className="w-10 h-10 rounded-none bg-white border border-[#303030]/5 flex items-center justify-center hover:bg-[#303030] hover:text-[#d8ef00] hover:scale-110 transition-all shadow-sm">
                  <Search size={18} />
               </button>
            </div>
@@ -135,10 +135,10 @@ export const Shell = ({ children, role, onLogout }: ShellProps) => {
 
         {/* Branding Footer */}
         <div className="px-8 mt-auto pt-8 border-t border-[#303030]/5">
-           <div className="bg-[#303030] rounded-[24px] p-8 space-y-6 shadow-2xl relative overflow-hidden group">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-[#d8ef00]/10 blur-[40px] rounded-full pointer-events-none" />
+           <div className="bg-[#303030] rounded-none p-8 space-y-6 shadow-2xl relative overflow-hidden group">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-[#d8ef00]/10 blur-[40px] rounded-none pointer-events-none" />
               <div className="flex items-center justify-between relative z-10">
-                 <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-[#d8ef00]">
+                 <div className="w-10 h-10 rounded-none bg-white/10 flex items-center justify-center text-[#d8ef00]">
                     <ChefHat size={20} />
                  </div>
                  <Badge className="bg-[#d8ef00] text-[#303030] text-[8px] font-black tracking-widest">v2.4</Badge>
@@ -153,7 +153,7 @@ export const Shell = ({ children, role, onLogout }: ShellProps) => {
            <div className="mt-8 space-y-1 pb-8">
               <button 
                 onClick={handleLogoutClick}
-                className="flex items-center gap-4 px-6 py-4 text-[#454557]/60 hover:text-red-500 hover:bg-red-50 w-full transition-all duration-500 rounded-[18px] group"
+                className="flex items-center gap-4 px-6 py-4 text-[#454557]/60 hover:text-red-500 hover:bg-red-50 w-full transition-all duration-500 rounded-none group"
               >
                 <LogOut size={20} className="group-hover:-translate-x-1 transition-transform" />
                 <span className="text-[10px] tracking-[0.2em] uppercase font-black">Secure Exit</span>
@@ -174,7 +174,7 @@ export const Shell = ({ children, role, onLogout }: ShellProps) => {
                location.pathname === '/messages' ? 'Communication Hub' : 
                'Insights Meta'}
             </h2>
-            <div className="hidden lg:flex items-center gap-8 bg-[#f5f3ef] px-6 py-3 rounded-full border border-[#303030]/5">
+            <div className="hidden lg:flex items-center gap-8 bg-[#f5f3ef] px-6 py-3 rounded-none border border-[#303030]/5">
               <NavLink to="/" className="text-[10px] font-black uppercase tracking-[0.2em] text-[#454557]/40 hover:text-[#0300a9] transition-colors">Overview</NavLink>
               <div className="w-px h-3 bg-[#454557]/20" />
               <NavLink to="/analytics" className="text-[10px] font-black uppercase tracking-[0.2em] text-[#454557]/40 hover:text-[#0300a9] transition-colors">Performance</NavLink>
@@ -184,7 +184,7 @@ export const Shell = ({ children, role, onLogout }: ShellProps) => {
           </div>
 
           <div className="flex items-center gap-8">
-            <div className="hidden xl:flex items-center gap-4 bg-[#f5f3ef] px-6 py-3 rounded-[16px] border border-[#303030]/5 focus-within:bg-white focus-within:ring-2 focus-within:ring-[#0300a9]/10 transition-all">
+            <div className="hidden xl:flex items-center gap-4 bg-[#f5f3ef] px-6 py-3 rounded-none border border-[#303030]/5 focus-within:bg-white focus-within:ring-2 focus-within:ring-[#0300a9]/10 transition-all">
               <Search className="text-[#454557]/40" size={18} />
               <input 
                 type="text" 
@@ -194,11 +194,11 @@ export const Shell = ({ children, role, onLogout }: ShellProps) => {
             </div>
             
             <div className="flex gap-4">
-               <button className="w-12 h-12 rounded-[14px] bg-white border border-[#303030]/5 flex items-center justify-center text-[#454557]/60 hover:text-[#0300a9] hover:border-[#0300a9]/20 transition-all shadow-sm relative">
+               <button className="w-12 h-12 rounded-none bg-white border border-[#303030]/5 flex items-center justify-center text-[#454557]/60 hover:text-[#0300a9] hover:border-[#0300a9]/20 transition-all shadow-sm relative">
                  <Bell size={20} />
-                 <div className="absolute top-3 right-3 w-2 h-2 bg-red-500 rounded-full ring-2 ring-white"></div>
+                 <div className="absolute top-3 right-3 w-2 h-2 bg-red-500 rounded-none ring-2 ring-white"></div>
                </button>
-               <button className="w-12 h-12 rounded-[14px] bg-white border border-[#303030]/5 flex items-center justify-center text-[#454557]/60 hover:text-[#0300a9] hover:border-[#0300a9]/20 transition-all shadow-sm">
+               <button className="w-12 h-12 rounded-none bg-white border border-[#303030]/5 flex items-center justify-center text-[#454557]/60 hover:text-[#0300a9] hover:border-[#0300a9]/20 transition-all shadow-sm">
                  <HelpCircle size={20} />
                </button>
             </div>
@@ -208,11 +208,11 @@ export const Shell = ({ children, role, onLogout }: ShellProps) => {
                 <p className="text-[11px] font-black text-[#303030] uppercase tracking-wider">{getProfileName(role)}</p>
                 <p className="text-[9px] uppercase font-black tracking-[0.2em] text-[#0300a9] opacity-60 mt-1">{getRoleLabel(role)}</p>
               </div>
-              <div className="w-12 h-12 rounded-[16px] border-2 border-[#0300a9]/5 p-0.5 shadow-xl rotate-3">
+              <div className="w-12 h-12 rounded-none border-2 border-[#0300a9]/5 p-0.5 shadow-xl rotate-3">
                  <img 
-                   src={`https://ui-avatars.com/api/?name=${getProfileName(role)}&background=0300a9&color=fff&bold=true&rounded=true`}
+                   src={`https://ui-avatars.com/api/?name=${getProfileName(role)}&background=0300a9&color=fff&bold=true&rounded=false`}
                    alt="Profile" 
-                   className="w-full h-full rounded-[12px] object-cover"
+                   className="w-full h-full rounded-none object-cover"
                  />
               </div>
             </div>
@@ -234,7 +234,7 @@ export const Shell = ({ children, role, onLogout }: ShellProps) => {
 };
 
 const Badge = ({ children, className }: { children: React.ReactNode, className?: string }) => (
-  <span className={cn("px-2 py-1 rounded-md text-[10px] font-bold uppercase tracking-widest", className)}>
+  <span className={cn("px-2 py-1 rounded-none text-[10px] font-bold uppercase tracking-widest", className)}>
     {children}
   </span>
 );

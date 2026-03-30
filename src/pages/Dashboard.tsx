@@ -98,15 +98,15 @@ export const Dashboard = () => {
               <Button variant="ghost" size="sm" icon={<ArrowUpRight size={18} />}>View Full Schedule</Button>
            </div>
 
-           <div className="bg-surface-low rounded-[48px] p-6 space-y-4">
+           <div className="bg-surface-low rounded-none p-6 space-y-4">
               {recentLessons.map((lesson: any) => (
                 <div key={lesson.id} className={cn(
-                  "p-10 hover:bg-white transition-all duration-700 group flex items-center justify-between rounded-[40px] border border-transparent hover:border-[#454557]/5 hover:shadow-2xl",
+                  "p-10 hover:bg-white transition-all duration-700 group flex items-center justify-between rounded-none border border-transparent hover:border-[#454557]/5 hover:shadow-2xl",
                   lesson.status === "Active" && "bg-white shadow-xl electric-glow border-primary/10"
                 )}>
                    <div className="flex items-center gap-10">
                       <div className={cn(
-                        "w-16 h-16 rounded-[24px] flex items-center justify-center transition-all duration-700 shadow-sm",
+                        "w-16 h-16 rounded-none flex items-center justify-center transition-all duration-700 shadow-sm",
                         lesson.status === "Active" ? "bg-[#303030] text-[var(--secondary)] scale-110" : "bg-white text-[#454557]/40 group-hover:bg-[#303030] group-hover:text-white"
                       )}>
                          {lesson.status === "Active" ? <Zap size={28} className="animate-pulse" /> : <Clock size={28} />}
@@ -124,7 +124,7 @@ export const Dashboard = () => {
                          <p className="text-2xl font-bold text-[#303030] leading-none mb-1">{lesson.students}</p>
                          <p className="text-[10px] uppercase font-black tracking-[0.3em] text-[#454557]/20">Student Nodes</p>
                       </div>
-                      <Button variant="ghost" size="sm" className="w-12 h-12 rounded-full p-0 bg-white group-hover:bg-primary group-hover:text-white shadow-sm border border-[#454557]/5">
+                      <Button variant="ghost" size="sm" className="w-12 h-12 rounded-none p-0 bg-white group-hover:bg-primary group-hover:text-white shadow-sm border border-[#454557]/5">
                          <ArrowUpRight size={20} />
                       </Button>
                    </div>
@@ -141,19 +141,19 @@ export const Dashboard = () => {
            </div>
            
            <div className="space-y-8">
-              <div className="bg-[#303030] rounded-[48px] p-12 text-white shadow-2xl relative overflow-hidden group">
-                 <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 blur-[80px] rounded-full pointer-events-none translate-x-1/2 -translate-y-1/2 group-hover:scale-150 transition-transform duration-1000" />
+              <div className="bg-[#303030] rounded-none p-12 text-white shadow-2xl relative overflow-hidden group">
+                 <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 blur-[80px] rounded-none pointer-events-none translate-x-1/2 -translate-y-1/2 group-hover:scale-150 transition-transform duration-1000" />
                  <Star className="text-[var(--secondary)] mb-10" size={36} />
                  <p className="serif text-3xl font-bold mb-6 italic leading-tight">Mastery <br/>Synchronized</p>
                  <p className="text-sm text-white/50 leading-relaxed font-medium mb-10">
                     G1 Alpha has achieved <span className="text-[var(--secondary)] font-black">Phonics Level 5</span> protocol status through accelerated engagement.
                  </p>
-                 <Button variant="secondary" className="w-full h-14 rounded-[20px]" icon={<ArrowUpRight size={18} />}>Acknowledge Milestone</Button>
+                 <Button variant="secondary" className="w-full h-14 rounded-none" icon={<ArrowUpRight size={18} />}>Acknowledge Milestone</Button>
               </div>
 
-              <div className="bg-surface-low rounded-[48px] p-12 group hover:bg-white border border-transparent hover:border-[#454557]/5 transition-all duration-700 shadow-sm hover:shadow-2xl">
+              <div className="bg-surface-low rounded-none p-12 group hover:bg-white border border-transparent hover:border-[#454557]/5 transition-all duration-700 shadow-sm hover:shadow-2xl">
                  <div className="flex items-center justify-between mb-10">
-                    <div className="w-16 h-16 rounded-[24px] bg-white flex items-center justify-center text-[#303030] group-hover:bg-[#d8ef00] transition-colors shadow-sm">
+                    <div className="w-16 h-16 rounded-none bg-white flex items-center justify-center text-[#303030] group-hover:bg-[#d8ef00] transition-colors shadow-sm">
                        <TrendingUp size={28} />
                     </div>
                     <Badge variant="secondary">STABLE</Badge>
@@ -165,7 +165,7 @@ export const Dashboard = () => {
                        <p className="text-[10px] font-black uppercase tracking-[0.2em] text-[#454557]/30 mb-1">Estimated MRR</p>
                        <p className="text-3xl font-bold text-primary">€1,450</p>
                     </div>
-                    <Button variant="ghost" size="sm" className="w-10 h-10 p-0 rounded-full bg-white shadow-sm" icon={<MoreVertical size={18} />} />
+                    <Button variant="ghost" size="sm" className="w-10 h-10 p-0 rounded-none bg-white shadow-sm" icon={<MoreVertical size={18} />} />
                  </div>
               </div>
            </div>

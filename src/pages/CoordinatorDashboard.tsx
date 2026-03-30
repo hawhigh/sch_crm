@@ -23,7 +23,7 @@ const LoadBar = ({ fillPct }: { fillPct: number }) => (
       <div
         key={i}
         className={cn(
-          "w-4 rounded-md shadow-sm transition-all duration-700",
+          "w-4 rounded-none shadow-sm transition-all duration-700",
           i < Math.round(fillPct / 25) ? "bg-primary" : "bg-[#e4e2de]"
         )}
       />
@@ -41,8 +41,8 @@ export const CoordinatorDashboard = () => {
   );
 
   if (error) return (
-    <div className="p-10 bg-surface-low text-primary rounded-[40px] flex items-center gap-6 border border-primary/10">
-      <div className="w-16 h-16 bg-white rounded-[24px] shadow-sm flex items-center justify-center text-primary">
+    <div className="p-10 bg-surface-low text-primary rounded-none flex items-center gap-6 border border-primary/10">
+      <div className="w-16 h-16 bg-white rounded-none shadow-sm flex items-center justify-center text-primary">
         <AlertCircle size={32} />
       </div>
       <div>
@@ -96,7 +96,7 @@ export const CoordinatorDashboard = () => {
         {/* Left Column: Requests & Staff (40%) */}
         <aside className="xl:col-span-4 space-y-12">
           
-          <section className="bg-surface-low rounded-[48px] p-10 border border-[#454557]/5 shadow-sm">
+          <section className="bg-surface-low rounded-none p-10 border border-[#454557]/5 shadow-sm">
             <div className="flex items-center justify-between mb-10">
               <h3 className="serif text-3xl font-bold text-[#303030] italic">Pending <span className="not-italic">Matches</span></h3>
               <Badge variant="primary">{data.pendingRequests.length}</Badge>
@@ -104,17 +104,17 @@ export const CoordinatorDashboard = () => {
             
             <div className="space-y-4">
               {data.pendingRequests.length > 0 ? data.pendingRequests.map((p: any) => (
-                <div key={p.id} className="bg-white rounded-[32px] p-8 border border-[#454557]/5 group hover:border-primary/10 hover:shadow-xl transition-all duration-500">
+                <div key={p.id} className="bg-white rounded-none p-8 border border-[#454557]/5 group hover:border-primary/10 hover:shadow-xl transition-all duration-500">
                   <div className="flex items-center justify-between mb-8">
                     <Badge variant={p.urgency === 'URGENT' ? 'primary' : 'secondary'} size="sm">{p.urgency || 'STANDARD'}</Badge>
                     <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#454557]/30">Live Now</span>
                   </div>
                   <h4 className="font-bold text-2xl text-[#303030] tracking-tight mb-2">{p.subject}</h4>
                   <p className="text-sm font-bold text-[#454557]/60 uppercase tracking-widest mb-10">{p.studentName}</p>
-                  <Button variant="primary" className="w-full h-14 rounded-[20px]" icon={<ArrowRight size={18} />}>Initialize Match</Button>
+                  <Button variant="primary" className="w-full h-14 rounded-none" icon={<ArrowRight size={18} />}>Initialize Match</Button>
                 </div>
               )) : (
-                <div className="p-20 text-center flex flex-col items-center border border-dashed border-[#454557]/20 rounded-[40px]">
+                <div className="p-20 text-center flex flex-col items-center border border-dashed border-[#454557]/20 rounded-none">
                   <CheckCircle size={40} className="text-[#5a6400]/20 mb-6" />
                   <p className="text-sm font-bold text-[#454557]/40 uppercase tracking-widest">Topology Balanced</p>
                 </div>
@@ -122,12 +122,12 @@ export const CoordinatorDashboard = () => {
             </div>
           </section>
 
-          <section className="bg-[#303030] p-12 rounded-[48px] text-white relative overflow-hidden group shadow-2xl">
-             <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 blur-[80px] rounded-full translate-x-1/3 -translate-y-1/3 group-hover:scale-150 transition-transform duration-1000" />
-             <div className="absolute bottom-0 left-0 w-48 h-48 bg-[var(--secondary)]/10 blur-[60px] rounded-full -translate-x-1/4 translate-y-1/4" />
+          <section className="bg-[#303030] p-12 rounded-none text-white relative overflow-hidden group shadow-2xl">
+             <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 blur-[80px] rounded-none translate-x-1/3 -translate-y-1/3 group-hover:scale-150 transition-transform duration-1000" />
+             <div className="absolute bottom-0 left-0 w-48 h-48 bg-[var(--secondary)]/10 blur-[60px] rounded-none -translate-x-1/4 translate-y-1/4" />
              
              <div className="relative z-10 flex flex-col items-center text-center">
-               <div className="w-16 h-16 rounded-[22px] bg-white/10 flex items-center justify-center mb-8 border border-white/10 backdrop-blur-md">
+               <div className="w-16 h-16 rounded-none bg-white/10 flex items-center justify-center mb-8 border border-white/10 backdrop-blur-md">
                  <Radio size={32} className="text-[var(--secondary)]" />
                </div>
                <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-[var(--secondary)] mb-4">Institutional Stream</p>
@@ -135,7 +135,7 @@ export const CoordinatorDashboard = () => {
                <p className="text-white/60 text-sm font-medium leading-relaxed mb-10">
                  Institutional locking set at <span className="text-white font-black">18:00 CET</span> across all sectors.
                </p>
-               <Button variant="secondary" className="w-full h-16 rounded-[24px]" icon={<ArrowRight size={18} />}>
+               <Button variant="secondary" className="w-full h-16 rounded-none" icon={<ArrowRight size={18} />}>
                  Operational Directives
                </Button>
              </div>
@@ -145,13 +145,13 @@ export const CoordinatorDashboard = () => {
         {/* Center: Room Topology & Staff (80%) */}
         <section className="xl:col-span-8 space-y-12">
           
-          <div className="bg-surface-low rounded-[48px] p-10 border border-[#454557]/5 shadow-sm">
+          <div className="bg-surface-low rounded-none p-10 border border-[#454557]/5 shadow-sm">
             <div className="flex items-center justify-between border-b border-[#454557]/10 pb-8 mb-10">
               <h3 className="serif text-3xl font-bold text-[#303030] italic">Room <span className="not-italic">Allocation Topology</span></h3>
               <div className="flex items-center gap-4">
-                <Button variant="ghost" size="sm" className="w-10 h-10 p-0 rounded-full" icon={<ChevronLeft size={20} />} />
+                <Button variant="ghost" size="sm" className="w-10 h-10 p-0 rounded-none" icon={<ChevronLeft size={20} />} />
                 <Badge variant="dark" className="px-6 py-2">Operational Phase: Today</Badge>
-                <Button variant="ghost" size="sm" className="w-10 h-10 p-0 rounded-full" icon={<ChevronRight size={20} />} />
+                <Button variant="ghost" size="sm" className="w-10 h-10 p-0 rounded-none" icon={<ChevronRight size={20} />} />
               </div>
             </div>
 
@@ -166,12 +166,12 @@ export const CoordinatorDashboard = () => {
                     <p className="font-bold text-xl text-[#303030] group-hover:text-primary transition-colors">{room.name}</p>
                     <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#454557]/40">Cap: {room.cap}</p>
                   </div>
-                  <div className="flex-1 bg-white/50 rounded-[32px] overflow-hidden flex gap-3 p-3 shadow-inner border border-[#454557]/5 min-h-[96px]">
+                  <div className="flex-1 bg-white/50 rounded-none overflow-hidden flex gap-3 p-3 shadow-inner border border-[#454557]/5 min-h-[96px]">
                     {room.slots.map((slot, i) => (
                       <div 
                         key={i} 
                         className={cn(
-                          "flex-1 rounded-[22px] p-5 flex flex-col justify-center transition-all duration-500 hover:scale-[0.98] cursor-pointer",
+                          "flex-1 rounded-none p-5 flex flex-col justify-center transition-all duration-500 hover:scale-[0.98] cursor-pointer",
                           slot.variant === 'primary' ? "bg-primary text-white" : 
                           slot.variant === 'secondary' ? "bg-[var(--secondary)] text-[#303030]" : 
                           slot.variant === 'dark' ? "bg-[#303030] text-white" : "bg-white text-[#454557]/40"
@@ -195,8 +195,8 @@ export const CoordinatorDashboard = () => {
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {data.staffAvailability.map((s: any) => (
-                <div key={s.id} className="flex items-center gap-6 bg-surface-low p-6 rounded-[32px] border border-transparent hover:border-[#454557]/5 hover:bg-white transition-all duration-500 shadow-sm group">
-                  <div className="w-16 h-16 rounded-[22px] bg-white flex items-center justify-center text-primary font-black overflow-hidden text-2xl shadow-sm group-hover:bg-primary group-hover:text-white transition-all duration-300 grow-0 shrink-0">
+                <div key={s.id} className="flex items-center gap-6 bg-surface-low p-6 rounded-none border border-transparent hover:border-[#454557]/5 hover:bg-white transition-all duration-500 shadow-sm group">
+                  <div className="w-16 h-16 rounded-none bg-white flex items-center justify-center text-primary font-black overflow-hidden text-2xl shadow-sm group-hover:bg-primary group-hover:text-white transition-all duration-300 grow-0 shrink-0">
                     {s.name.charAt(0)}
                   </div>
                   <div className="min-w-0 flex-1">

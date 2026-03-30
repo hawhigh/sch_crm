@@ -50,8 +50,8 @@ export const CurriculumStudio = () => {
             </div>
           </div>
 
-          <div className="bg-surface-low p-12 rounded-[40px] flex flex-col gap-12 relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-primary/5 blur-[80px] rounded-full translate-x-1/2 -translate-y-1/3 pointer-events-none" />
+          <div className="bg-surface-low p-12 rounded-none flex flex-col gap-12 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-primary/5 blur-[80px] rounded-none translate-x-1/2 -translate-y-1/3 pointer-events-none" />
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
               <div>
@@ -78,9 +78,9 @@ export const CurriculumStudio = () => {
                 {curriculumSequence.map((step) => (
                   <div 
                     key={step.id} 
-                    className="bg-white p-6 rounded-[24px] flex items-center gap-8 group hover:bg-[#303030] transition-colors cursor-pointer shadow-sm relative overflow-hidden"
+                    className="bg-white p-6 rounded-none flex items-center gap-8 group hover:bg-[#303030] transition-colors cursor-pointer shadow-sm relative overflow-hidden"
                   >
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-[var(--secondary)]/10 blur-[20px] rounded-full translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-[var(--secondary)]/10 blur-[20px] rounded-none translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity" />
                     
                     <span className="text-5xl font-bold tracking-tighter text-[#e4e2de] group-hover:text-[var(--secondary)] transition-colors duration-500 relative z-10">
                       {step.id}
@@ -102,9 +102,9 @@ export const CurriculumStudio = () => {
 
           <div className="space-y-4">
             <label className="block text-[10px] font-bold uppercase tracking-[0.2em] text-[#454557]/60">Lecturer Delivery Notes</label>
-            <div className="bg-[#303030] p-10 rounded-[32px] italic text-white/90 leading-relaxed text-xl relative group overflow-hidden flex gap-6 items-start">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 blur-[80px] rounded-full pointer-events-none" />
-              <div className="w-1.5 h-16 bg-[var(--secondary)] rounded-full shrink-0 mt-1 shadow-[0_0_15px_rgba(216,239,0,0.5)]" />
+            <div className="bg-[#303030] p-10 rounded-none italic text-white/90 leading-relaxed text-xl relative group overflow-hidden flex gap-6 items-start">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 blur-[80px] rounded-none pointer-events-none" />
+              <div className="w-1.5 h-16 bg-[var(--secondary)] rounded-none shrink-0 mt-1 shadow-[0_0_15px_rgba(216,239,0,0.5)]" />
               <p className="relative z-10 font-bold serif font-medium">
                 "Ensure students focus on the emotional weight of adjectives rather than just literal meaning. Use the provided New York Times clipping as the primary reference point."
               </p>
@@ -113,11 +113,11 @@ export const CurriculumStudio = () => {
         </section>
 
         {/* Right Column: Knowledge Library Resource Picker (40%) */}
-        <aside className="flex-[2] bg-surface-low rounded-[40px] p-10 flex flex-col gap-8 overflow-hidden relative">
+        <aside className="flex-[2] bg-surface-low rounded-none p-10 flex flex-col gap-8 overflow-hidden relative">
           
           <div className="flex items-center justify-between border-b border-[#454557]/10 pb-6">
             <h3 className="serif text-3xl font-bold text-[#303030]">Knowledge <span className="italic font-normal">Library</span></h3>
-            <button className="w-12 h-12 hover:bg-white rounded-[16px] transition-all flex items-center justify-center text-[#303030] shadow-sm bg-white border border-[#454557]/5">
+            <button className="w-12 h-12 hover:bg-white rounded-none transition-all flex items-center justify-center text-[#303030] shadow-sm bg-white border border-[#454557]/5">
               <Filter size={20} />
             </button>
           </div>
@@ -135,7 +135,7 @@ export const CurriculumStudio = () => {
                 key={tab}
                 onClick={() => setActiveTab(tab)}
                 className={cn(
-                  "px-6 py-3 text-[10px] font-bold uppercase tracking-[0.2em] rounded-[12px] transition-all",
+                  "px-6 py-3 text-[10px] font-bold uppercase tracking-[0.2em] rounded-none transition-all",
                   activeTab === tab 
                     ? "bg-[#303030] text-white shadow-md" 
                     : "bg-white text-[#454557]/80 hover:bg-[#e4e2de] shadow-sm border border-[#454557]/5"
@@ -152,11 +152,11 @@ export const CurriculumStudio = () => {
             ) : filteredResources?.map((resource: any) => (
               <div 
                 key={resource.id} 
-                className="bg-white rounded-[24px] p-6 flex flex-col gap-6 group hover:shadow-lg hover:-translate-y-1 transition-all duration-300 border border-[#454557]/5"
+                className="bg-white rounded-none p-6 flex flex-col gap-6 group hover:shadow-lg hover:-translate-y-1 transition-all duration-300 border border-[#454557]/5"
               >
                 <div className="flex items-start gap-5">
                   <div className={cn(
-                    "w-14 h-16 flex items-center justify-center rounded-[16px] shrink-0",
+                    "w-14 h-16 flex items-center justify-center rounded-none shrink-0",
                     resource.type === 'PDF' ? "bg-primary text-white" : 
                     resource.type === 'VIDEO' ? "bg-[var(--secondary)] text-[#303030]" : "bg-[#303030] text-white"
                   )}>
@@ -169,7 +169,7 @@ export const CurriculumStudio = () => {
                       {resource.url ? 'Available Content' : 'Pending Upload'}
                     </p>
                   </div>
-                  <button className="w-10 h-10 bg-surface-low rounded-full flex items-center justify-center text-[#303030] hover:bg-primary hover:text-white transition-all hover:scale-[1.05]">
+                  <button className="w-10 h-10 bg-surface-low rounded-none flex items-center justify-center text-[#303030] hover:bg-primary hover:text-white transition-all hover:scale-[1.05]">
                     <Plus size={20} />
                   </button>
                 </div>
@@ -181,14 +181,14 @@ export const CurriculumStudio = () => {
                   </span>
                   <label className="relative inline-flex items-center cursor-pointer">
                     <input type="checkbox" className="sr-only peer" defaultChecked={resource.type !== 'VIDEO'} />
-                    <div className="w-12 h-6 bg-[#e4e2de] rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary peer-checked:after:bg-[var(--secondary)] shadow-inner"></div>
+                    <div className="w-12 h-6 bg-[#e4e2de] rounded-none peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:rounded-none after:h-4 after:w-4 after:transition-all peer-checked:bg-primary peer-checked:after:bg-[var(--secondary)] shadow-inner"></div>
                   </label>
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="mt-6 bg-[#303030] rounded-[32px] p-10 text-center hover:-translate-y-2 transition-transform duration-500 cursor-pointer group relative overflow-hidden">
+          <div className="mt-6 bg-[#303030] rounded-none p-10 text-center hover:-translate-y-2 transition-transform duration-500 cursor-pointer group relative overflow-hidden">
             <div className="absolute inset-0 bg-primary/10 group-hover:bg-primary/20 transition-colors pointer-events-none mix-blend-overlay" />
             <UploadCloud className="mx-auto text-[var(--secondary)] group-hover:scale-125 transition-transform duration-700 relative z-10 drop-shadow-lg" size={48} />
             <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white mt-6 relative z-10">Upload Custom Asset</p>

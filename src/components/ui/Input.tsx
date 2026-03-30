@@ -30,7 +30,7 @@ export const Input = ({
         )}
         <input
           className={cn(
-            "w-full bg-surface-low border border-[#454557]/5 rounded-[20px] py-4 px-6 focus:ring-4 focus:ring-primary/10 focus:bg-white outline-none transition-all font-medium text-sm text-[#303030] placeholder:text-[#454557]/30 placeholder:uppercase placeholder:font-bold placeholder:tracking-[0.1em]",
+            "w-full bg-surface-low border border-[#454557]/5 rounded-none py-4 px-6 focus:ring-4 focus:ring-primary/10 focus:bg-white outline-none transition-all font-medium text-sm text-[#303030] placeholder:text-[#454557]/30 placeholder:uppercase placeholder:font-bold placeholder:tracking-[0.1em]",
             icon && "pl-14",
             error && "border-error focus:ring-error/10",
           )}

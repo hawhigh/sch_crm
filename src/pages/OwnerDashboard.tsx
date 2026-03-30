@@ -13,7 +13,7 @@ const BarChart = () => {
       {bars.map((h, i) => (
         <div
           key={i}
-          className="flex-1 rounded-[4px] transition-all duration-700 hover:scale-105"
+          className="flex-1 rounded-none transition-all duration-700 hover:scale-105"
           style={{
             height: `${h}%`,
             background: i === bars.length - 1
@@ -33,13 +33,13 @@ export const OwnerDashboard = () => {
 
   if (isLoading) return (
     <div className="flex items-center justify-center min-h-[60vh]">
-      <div className="w-12 h-12 border-4 border-primary/20 border-t-primary rounded-full animate-spin" />
+      <div className="w-12 h-12 border-4 border-primary/20 border-t-primary rounded-none animate-spin" />
     </div>
   );
 
   if (error) return (
-    <div className="p-8 bg-red-50 text-[var(--error)] rounded-[24px] border border-red-100 flex items-center gap-4">
-      <div className="w-10 h-10 rounded-full bg-[var(--error)]/10 flex items-center justify-center">
+    <div className="p-8 bg-red-50 text-[var(--error)] rounded-none border border-red-100 flex items-center gap-4">
+      <div className="w-10 h-10 rounded-none bg-[var(--error)]/10 flex items-center justify-center">
         <TrendingUp size={20} />
       </div>
       <div>
@@ -61,7 +61,7 @@ export const OwnerDashboard = () => {
       <div className="border-b border-[#454557]/10 pb-12 flex flex-col md:flex-row md:items-end justify-between gap-8">
         <div className="max-w-2xl">
           <div className="flex items-center gap-3 mb-6">
-            <span className="px-3 py-1.5 bg-[#454557]/5 text-[#454557] text-[10px] font-bold uppercase tracking-[0.2em] rounded-md">
+            <span className="px-3 py-1.5 bg-[#454557]/5 text-[#454557] text-[10px] font-bold uppercase tracking-[0.2em] rounded-none">
               Encrypted Session
             </span>
             <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#454557]/40">
@@ -102,7 +102,7 @@ export const OwnerDashboard = () => {
         )}
       >
         <div className="space-y-8">
-          <div className="bg-surface-low p-8 rounded-[24px] mb-4">
+          <div className="bg-surface-low p-8 rounded-none mb-4">
              <p className="text-sm font-medium text-[#454557] italic leading-relaxed">
                Deploying a new institutional node initiates a secure ledger entry for the academy and provisionings its database shard.
              </p>
@@ -131,13 +131,13 @@ export const OwnerDashboard = () => {
       <div className="grid grid-cols-1 xl:grid-cols-12 gap-8">
         
         {/* Deep Tonal Section (60%) */}
-        <div className="xl:col-span-8 bg-surface-low rounded-[32px] p-12 relative overflow-hidden group">
-          <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-primary/5 blur-[80px] rounded-full translate-x-1/3 -translate-y-1/3 transition-all duration-1000 group-hover:bg-primary/10" />
+        <div className="xl:col-span-8 bg-surface-low rounded-none p-12 relative overflow-hidden group">
+          <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-primary/5 blur-[80px] rounded-none translate-x-1/3 -translate-y-1/3 transition-all duration-1000 group-hover:bg-primary/10" />
           
           <div className="relative z-10 flex flex-col h-full justify-between">
             <div>
               <div className="flex items-center gap-3 mb-8">
-                <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                <div className="w-2 h-2 rounded-none bg-primary animate-pulse" />
                 <Badge variant="primary" size="sm">Live Revenue Stream</Badge>
               </div>
               
@@ -225,8 +225,8 @@ export const OwnerDashboard = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {metrics.hubs.map((hub: any, index: number) => (
             <div key={hub.id} className="group cursor-pointer">
-              <div className="rounded-[24px] bg-surface-low p-8 h-full transition-all duration-500 group-hover:bg-surface-high group-hover:shadow-[0_20px_40px_rgba(27,28,26,0.06)] flex flex-col">
-                <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center text-primary shadow-sm space-y-0 mb-8 border border-white/50">
+              <div className="rounded-none bg-surface-low p-8 h-full transition-all duration-500 group-hover:bg-surface-high group-hover:shadow-[0_20px_40px_rgba(27,28,26,0.06)] flex flex-col">
+                <div className="w-12 h-12 rounded-none bg-white flex items-center justify-center text-primary shadow-sm space-y-0 mb-8 border border-white/50">
                   <span className="font-serif italic text-xl">{index + 1}</span>
                 </div>
                 
@@ -254,28 +254,28 @@ export const OwnerDashboard = () => {
 
       {/* Advisory & Intelligence Stream (Glass / Solid Combos) */}
       <div className="grid grid-cols-1 xl:grid-cols-12 gap-8 pt-12">
-        <div className="xl:col-span-4 bg-primary rounded-[32px] p-10 flex flex-col justify-between text-white shadow-2xl shadow-primary/20 relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-white/5 blur-[60px] rounded-full translate-x-1/2 -translate-y-1/2" />
+        <div className="xl:col-span-4 bg-primary rounded-none p-10 flex flex-col justify-between text-white shadow-2xl shadow-primary/20 relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-white/5 blur-[60px] rounded-none translate-x-1/2 -translate-y-1/2" />
           <div className="relative z-10">
             <h3 className="font-serif text-3xl font-bold italic mb-6">Sys-Advisory</h3>
             <p className="text-white/80 text-lg leading-relaxed font-medium">
               Institutional momentum across the network of {metrics.totalHubs} locations is trending {metrics.growth} above baseline targets. 
             </p>
           </div>
-          <button className="bg-white text-primary px-6 py-4 rounded-xl text-xs font-bold uppercase tracking-[0.2em] mt-8 hover:bg-surface-low transition-colors w-max">
+          <button className="bg-white text-primary px-6 py-4 rounded-none text-xs font-bold uppercase tracking-[0.2em] mt-8 hover:bg-surface-low transition-colors w-max">
             Decide Action
           </button>
         </div>
 
-        <div className="xl:col-span-8 bg-surface-low rounded-[32px] p-10 border border-[#454557]/5">
+        <div className="xl:col-span-8 bg-surface-low rounded-none p-10 border border-[#454557]/5">
           <div className="flex items-center justify-between mb-8">
             <h3 className="text-2xl font-bold text-[#303030]">Operational Stream</h3>
-            <div className="px-3 py-1 bg-white rounded-md text-[10px] font-bold uppercase tracking-widest text-primary shadow-sm border border-[#454557]/5">Live</div>
+            <div className="px-3 py-1 bg-white rounded-none text-[10px] font-bold uppercase tracking-widest text-primary shadow-sm border border-[#454557]/5">Live</div>
           </div>
           <div className="space-y-2">
             {flow.map((item, idx) => (
-              <div key={idx} className={`p-6 rounded-2xl flex items-start gap-6 transition-all duration-300 ${item.highlight ? 'bg-white shadow-[0_10px_30px_rgba(27,28,26,0.04)] ring-1 ring-[#454557]/5' : 'hover:bg-white/60'}`}>
-                <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 ${item.highlight ? 'bg-primary/10 text-primary' : 'bg-[#e4e2de] text-[#454557]'}`}>
+              <div key={idx} className={`p-6 rounded-none flex items-start gap-6 transition-all duration-300 ${item.highlight ? 'bg-white shadow-[0_10px_30px_rgba(27,28,26,0.04)] ring-1 ring-[#454557]/5' : 'hover:bg-white/60'}`}>
+                <div className={`w-12 h-12 rounded-none flex items-center justify-center shrink-0 ${item.highlight ? 'bg-primary/10 text-primary' : 'bg-[#e4e2de] text-[#454557]'}`}>
                   {item.icon}
                 </div>
                 <div className="flex-1">

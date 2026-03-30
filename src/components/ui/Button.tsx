@@ -26,10 +26,10 @@ export const Button = ({
   };
 
   const sizes = {
-    sm: "px-4 py-2 text-[10px] rounded-[10px]",
-    md: "px-6 py-3 text-[10px] rounded-[14px]",
-    lg: "px-8 py-4 text-xs rounded-[16px]",
-    xl: "px-10 py-5 text-sm rounded-[24px]",
+    sm: "px-4 py-2 text-[10px] rounded-none",
+    md: "px-6 py-3 text-[10px] rounded-none",
+    lg: "px-8 py-4 text-xs rounded-none",
+    xl: "px-10 py-5 text-sm rounded-none",
   };
 
   return (
